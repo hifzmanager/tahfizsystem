@@ -15,6 +15,61 @@
             overflow-x: hidden;
         }
         
+        /* قسم الاصدارات القديمه */
+        
+        /* إعدادات عامة */
+/* إعدادات عامة */
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(135deg, #274778, #1b3b59);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* إضافة قسم الإصدارات السابقة */
+.previous-versions {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center;
+    max-width: 800px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.previous-versions h3 {
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px #000;
+}
+
+.previous-versions p {
+    color: #ddd;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* أزرار التنقل مع التأثيرات */
+.previous-versions a {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 12px 30px;
+    font-size: 1.2em;
+    color: #fff;
+    background: #5DADE2;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background 0.3s ease;
+}
+
+.previous-versions a:hover {
+    background: #1a60a7;
+    transform: scale(1.05);
+}
+        
         /* قسم الصور */
 .gallery {
     margin: 30px auto;
@@ -402,6 +457,16 @@
                 <a href="https://youtu.be/ucYwvFyW97M?si=An7FXYN9gtSpG-ex" target="_blank" style="color: #5DADE2; text-decoration: none;">مشاهدة الفيديو التعريفي للتطبيق</a>
             </p>
         </div>
+        
+        <!-- قسم الإصدارات السابقة -->
+<div class="previous-versions">
+    <h3>الإصدارات السابقة</h3>
+    <p>يمكنك تحميل الإصدارات السابقة من التطبيق هنا:</p>
+    <div class="actions">
+        <a href="https://www.mediafire.com/file/z6zl1xnu94mbul9/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_1.1.apk/file" target="_blank" class="btn-download">تحميل الإصدار 2</a>
+        <a href="https://www.mediafire.com/file/hu36qye614p7rj7/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8.apk/file" target="_blank" class="btn-download">تحميل الإصدار 1</a>
+    </div>
+</div>
 
         <div class="note">
             هذا هو الإصدار الثالث من التطبيق، ونحن نعمل على تطويره وتحديثه باستمرار.
