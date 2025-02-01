@@ -412,6 +412,114 @@ body {
         .navbar a:hover {
             color: #5DADE2;
         }
+        
+              /*  الملاحضة  */
+      
+.custom-note {
+  width: 90%; /* عرض متجاوب */
+  max-width: 600px; /* أقصى عرض */
+  margin: 30px auto; /* توسيط الملاحظة وإضافة مسافة */
+  padding: 20px 20px 20px 40px; /* تعديل الحشو (يمين أقل لتعويض الخط) */
+  background-color: #1d1e21; /* لون الخلفية */
+  border-radius: 12px; /* حواف مدورة */
+  position: relative;
+  isolation: isolate; /* لعزل العناصر */
+}
+
+.custom-note::before {
+  content: '';
+  position: absolute;
+  width: 4px; /* عرض الخط العمودي */
+  height: 80%; /* ارتفاع الخط العمودي */
+  background-color: #373c3d; /* لون الخط العمودي */
+  top: 10%; /* تحديد المسافة من الأعلى */
+  right: 20px; /* نقل الخط إلى اليمين مع مسافة مناسبة */
+  z-index: 10; /* التأكد من ظهور الخط فوق الخلفية */
+  border-radius: 2px; /* حواف مدورة للخط */
+}
+
+.note-text {
+  color: #9c9c9c; /* لون النص */
+  font-size: 1.1em; /* حجم الخط */
+  line-height: 1.6; /* تباعد الأسطر */
+  white-space: pre-wrap; /* الحفاظ على التنسيق */
+  margin: 0; /* إزالة الهوامش الافتراضية */
+  padding-right: 40px; /* مسافة بين النص والخط (مماثلة لليسار) */
+}
+
+.note-text .font-semibold {
+  font-weight: 600; /* سمك الخط للنص الغامق */
+  color: #5DADE2; /* لون النص الغامق */
+}
+
+/* تصميم متجاوب للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .custom-note {
+    padding: 15px 15px 15px 30px; /* تقليل الحشو على الشاشات الصغيرة */
+  }
+
+  .custom-note::before {
+    right: 15px; /* تقليل المسافة بين الخط والنص على الشاشات الصغيرة */
+  }
+
+  .note-text {
+    font-size: 1em; /* تقليل حجم الخط على الشاشات الصغيرة */
+    padding-right: 30px; /* تقليل المسافة بين النص والخط */
+  }
+}.custom-note {
+  width: 90%; /* عرض متجاوب */
+  max-width: 600px; /* أقصى عرض */
+  margin: 30px auto; /* توسيط الملاحظة وإضافة مسافة */
+  padding: 20px 20px 20px 40px; /* تعديل الحشو (يمين أقل لتعويض الخط) */
+  background-color: #1d1e21; /* لون الخلفية */
+  border-radius: 12px; /* حواف مدورة */
+  position: relative;
+  isolation: isolate; /* لعزل العناصر */
+}
+
+.custom-note::before {
+  content: '';
+  position: absolute;
+  width: 4px; /* عرض الخط العمودي */
+  height: 80%; /* ارتفاع الخط العمودي */
+  background-color: #373c3d; /* لون الخط العمودي */
+  top: 10%; /* تحديد المسافة من الأعلى */
+  right: 20px; /* نقل الخط إلى اليمين مع مسافة مناسبة */
+  z-index: 10; /* التأكد من ظهور الخط فوق الخلفية */
+  border-radius: 2px; /* حواف مدورة للخط */
+}
+
+.note-text {
+  color: #9c9c9c; /* لون النص */
+  font-size: 1.1em; /* حجم الخط */
+  line-height: 1.6; /* تباعد الأسطر */
+  white-space: pre-wrap; /* الحفاظ على التنسيق */
+  margin: 0; /* إزالة الهوامش الافتراضية */
+  padding-right: 40px; /* مسافة بين النص والخط (مماثلة لليسار) */
+}
+
+.note-text .font-semibold {
+  font-weight: 600; /* سمك الخط للنص الغامق */
+  color: #5DADE2; /* لون النص الغامق */
+}
+
+/* تصميم متجاوب للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .custom-note {
+    padding: 15px 15px 15px 30px; /* تقليل الحشو على الشاشات الصغيرة */
+  }
+
+  .custom-note::before {
+    right: 15px; /* تقليل المسافة بين الخط والنص على الشاشات الصغيرة */
+  }
+
+  .note-text {
+    font-size: 1em; /* تقليل حجم الخط على الشاشات الصغيرة */
+    padding-right: 30px; /* تقليل المسافة بين النص والخط */
+  }
+}
+
+
     </style>
 </head>
 <body>
@@ -474,9 +582,15 @@ body {
     </div>
 </div>
 
-        <div class="note">
-            هذا هو الإصدار الرابع من التطبيق، ونحن نعمل على تطويره وتحديثه باستمرار.
-        </div>
+  <!-- كود الملاحضة -->
+
+  <div class="custom-note">
+  <p class="note-text">
+    <span class="font-semibold">ملاحظة:</span> هذا هو الإصدار الرابع من التطبيق، ونحن نعمل على تطويره وتحديثه باستمرار.
+  </p>
+</div>
+
+
     </div>
     
     <!DOCTYPE html>
