@@ -585,8 +585,128 @@ body {
         0%, 100% { opacity: 1; }
         50% { opacity: 0; }
     }
+    
+    
+    /*  القسم السفلي  */
 
+    footer {
+    background: linear-gradient(135deg, #0a1a2f, #06121f);
+    padding: 35px 20px 20px;
+    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Cairo', sans-serif;
+}
 
+/* محتوى الفوتر المدمج */
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    z-index: 1;
+}
+
+/* العناصر النصية المنسّقة */
+.copyright-text {
+    color: #d3d3d3;
+    font-size: 0.95em;
+    padding: 4px 10px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+}
+
+/* الفاصل المدمج */
+.separator {
+    color: #5DADE2;
+    opacity: 0.6;
+    margin: 0 4px;
+    font-size: 1.2em;
+    transform: rotate(8deg);
+    display: inline-block;
+}
+
+/* قسم المطور المدمج */
+.developer {
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: rgba(93,173,226,0.08);
+    transition: all 0.25s ease;
+}
+
+.developer:hover {
+    background: rgba(93,173,226,0.15);
+}
+
+/* رابط المطور المنسّق */
+.developer-link {
+    color: #5DADE2 !important;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    font-size: 0.95em;
+}
+
+/* تأثير الخط السفلي الديناميكي */
+.developer-link::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: #5DADE2;
+    transition: width 0.2s ease;
+}
+
+.developer-link:hover::after {
+    width: 100%;
+}
+
+/* تحسينات الإيموجي المتحرك */
+.emoji {
+    animation: subtleFloat 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+}
+
+@keyframes subtleFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-2px) rotate(2deg); }
+}
+
+/* تحسينات الجوال */
+@media (max-width: 768px) {
+    footer {
+        padding: 30px 15px 15px;
+        margin-top: 40px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 3px;
+    }
+    
+    .separator {
+        transform: rotate(90deg) scale(0.7);
+        margin: 2px 0;
+    }
+    
+    .copyright-text {
+        font-size: 0.9em;
+        padding: 3px 8px;
+    }
+    
+    .developer {
+        padding: 4px 8px;
+    }
+}
 
     </style>
 </head>
@@ -699,8 +819,18 @@ body {
 
     <!-- القسم السفلي -->
    <footer>
-        <p>© 2024 إدارة حلقات التحفيظ | تم التطوير بواسطة <a href="https://wa.me/+967716100062" target="_blank">عبدالرحمن طارق الفلق</a></p>
-    </footer>
+  <div class="footer-wave"></div>
+  <p class="footer-content">
+    <span class="copyright-text">© 2024 إدارة حلقات التحفيظ</span>
+    <span class="separator">|</span>
+    <span class="developer">
+      تم التطوير بواسطة
+      <a href="https://wa.me/+967716100062" target="_blank" class="developer-link">
+        عبدالرحمن طارق الفلق
+      </a>
+    </span>
+  </p>
+</footer>
 
     <script>
         // JavaScript لإخفاء الشريط عند التمرير لأسفل
