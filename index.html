@@ -589,7 +589,7 @@ body {
     
     /*  القسم السفلي  */
 
-    footer {
+   /* تخصيص القfooter {
     background: linear-gradient(135deg, #0a1a2f, #06121f);
     padding: 35px 20px 20px;
     margin-top: 60px;
@@ -700,13 +700,128 @@ body {
     
     .copyright-text {
         font-size: 0.9em;
-        padding: 3px 8px;
+        padding: 3p.features {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.features li {
+    background: #ffffff; /* خلفية بيضاء صلبة */
+    border-left: 4px solid #5DADE2; /* إبقاء الحدود الزرقاء */
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* ظل أنعم */
+    color: #2d3436; /* لون نص داكن */
+}
+
+.features li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(93, 173, 226, 0.1), /* تدرج أزرق فاتح */
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.features li:hover {
+    transform: translateX(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* ظل أكثر وضوحًا */
+    background: #f8f9fa; /* خلفية رمادية فاتحة عند hover */
+}
+
+.features li:hover::before {
+    right: 100%;
+}
+
+/* إضافة تأثيرات نصية */
+.features li {
+    font-weight: 500;
+    letter-spacing: -0.5px;
+}
+
+.features li::after {
+    content: "•";
+    color: #5DADE2;
+    font-size: 1.8em;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}x 8px;
     }
     
     .developer {
         padding: 4px 8px;
     }
 }
+
+
+   /* تعديلات أنيقة لقائمة المميزات */
+   
+        .features {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .features li {
+            background: rgba(255,255,255,0.05);
+            border-left: 4px solid #5DADE2;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.1),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .features li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .features li:hover::before {
+            right: 100%;
+        }
+        
+        #features h2 {
+    color: #ffffff !important;
+    border-bottom: 2px solid #5DADE2;
+    display: inline-block;
+    padding-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
 
     </style>
 </head>
@@ -741,16 +856,16 @@ body {
     <div class="content" id="features">
         <h2>مميزات التطبيق</h2>
         <ul class="features">
-            <li>إرسال التقرير اليومي مباشرة إلى ولي أمر الطالب.</li>
-            <li>الوضع الليلي لتجربة استخدام مريحة أثناء الليل.</li>
-            <li>إمكانية تخصيص الطلاب (ذكور/إناث) لتسهيل التنظيم.</li>
-            <li>إنشاء تقارير يومية، أسبوعية، وشهرية بضغطة واحدة.</li>
-            <li>إدارة الحلقات والطلاب وحفظ البيانات بسهولة.</li>
-            <li>حفظ واسترجاع النسخ الاحتياطية بنقرة واحدة.</li>
-            <li>عرض الحلقات والدخول إليها عبر "الوصول السريع".</li>
-            <li>تتبع حضور وغياب الطلاب بدقة.</li>
-            <li>التطبيق مجاني بالكامل وبدون إعلانات.</li>
-            <li>تصميم بسيط وسهل الاستخدام يناسب جميع الفئات.</li>
+            <li>إرسال التقرير اليومي مباشرة إلى ولي أمر الطالب</li>
+            <li>الوضع الليلي لتجربة استخدام مريحة أثناء الليل</li>
+            <li>إمكانية تخصيص الطلاب (ذكور/إناث) لتسهيل التنظيم</li>
+            <li>إنشاء تقارير يومية، أسبوعية، وشهرية بضغطة واحدة</li>
+            <li>إدارة الحلقات والطلاب وحفظ البيانات بسهولة</li>
+            <li>حفظ واسترجاع النسخ الاحتياطية بنقرة واحدة</li>
+            <li>عرض الحلقات والدخول إليها عبر "الوصول السريع"</li>
+            <li>تتبع حضور وغياب الطلاب بدقة</li>
+            <li>التطبيق مجاني بالكامل وبدون إعلانات</li>
+            <li>تصميم بسيط وسهل الاستخدام يناسب جميع الفئات</li>
         </ul>
 
         <!-- الأزرار -->
