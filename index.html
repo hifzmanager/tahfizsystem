@@ -521,6 +521,47 @@ body {
 }
 
 
+    /* تمييز أزرار الإصدار الأخير */
+.latest-btn {
+    background: #5DADE2;
+    position: relative;
+    padding-right: 45px;
+}
+
+.latest-btn:hover {
+    background: #219a52;
+}
+
+.latest-btn::after {
+    content: "الأحدث";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #e74c3c;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: 0.7em;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* تعديل عنوان الإصدارات السابقة */
+.previous-versions h3 {
+    color: #95a5a6;
+    border-bottom: 2px solid #95a5a6;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+
+
     </style>
 </head>
 <body>
@@ -565,12 +606,13 @@ body {
 
         <!-- الأزرار -->
         <div class="actions" id="download">
-            <a href="https://www.dropbox.com/scl/fi/fe2i6vt3wtl3rgsfgu7fj/_4.apk?rlkey=kwxdqhdz439fk12gn146js1ft&st=yu2d9370&dl=1" target="_blank" class="btn">التحميل المباشر</a>
-            <a href="https://www.mediafire.com/file/b7q5w1rm72tsxlp/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_4.apk/file" class="btn">تحميل التطبيق من MediaFire</a>
-            <p style="font-size: 1.2em; color: #ddd; margin-top: 20px;">
-                <a href="https://youtu.be/ucYwvFyW97M?si=An7FXYN9gtSpG-ex" target="_blank" style="color: #5DADE2; text-decoration: none;">مشاهدة الفيديو التعريفي للتطبيق</a>
-            </p>
-        </div>
+    <h3 style="color: #FFFFFF; margin: 20px 0;">الإصدار الرابع (أحدث نسخة)</h3>
+    <a href="https://www.dropbox.com/scl/fi/fe2i6vt3wtl3rgsfgu7fj/_4.apk?rlkey=kwxdqhdz439fk12gn146js1ft&st=yu2d9370&dl=1" class="btn latest-btn">التحميل المباشر
+    <a href="https://www.mediafire.com/file/b7q5w1rm72tsxlp/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_4.apk/file" class="btn latest-btn">تحميل من MediaFire</a>
+    <p style="font-size: 1.2em; color: #ddd; margin-top: 20px;">
+        <a href="https://youtu.be/ucYwvFyW97M?si=An7FXYN9gtSpG-ex" target="_blank" style="color: #5DADE2; text-decoration: none;">مشاهدة الفيديو التعريفي للتطبيق</a>
+    </p>
+</div>
         
         <!-- قسم الإصدارات السابقة -->
 <div class="previous-versions">
