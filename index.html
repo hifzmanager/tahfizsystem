@@ -561,6 +561,32 @@ body {
 }
 
 
+    /*  كود وصف الموقع  */
+    
+   .type-container {
+        display: inline-block;
+        position: relative;
+        margin: 15px 0;
+    }
+
+    #animatedText {
+        font-size: 1.5em;
+        color: white; /* اللون الأبيض */
+        padding-right: 5px;
+    }
+
+    .cursor {
+        color: white;
+        animation: blink 1s infinite;
+        font-weight: bold;
+    }
+
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+
 
     </style>
 </head>
@@ -576,7 +602,10 @@ body {
     <!-- رأس الصفحة -->
     <header>
         <h1>تطبيق إدارة حلقات التحفيظ</h1>
-        <p>إدارة الحلقات بأسلوب مبتكر وسهل الاستخدام</p>
+    <div class="type-container">
+        <span id="animatedText"></span>
+        <span class="cursor">|</span>
+    </div>
     </header>
     
     <!-- خلفية الدوائر -->
@@ -689,6 +718,50 @@ body {
 
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // يمنع الانتقال إلى أعلى الصفحة في بعض الحالات
         });
+        
+        // كود تاثير ضهور وصف الموقع
+        
+    const texts = [
+        "إدارة الحلقات بأسلوب مبتكر وسهل",
+        "تنظيم الحفظ بذكاء وفعالية",
+        "تتبع التقدم اليومي للطلاب",
+        "واجهة تفاعلية بسيطة للجميع",
+        "إرسال تقارير تلقائية للآباء"
+    ];
+
+    let index = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const speed = 100;
+    const elem = document.getElementById("animatedText");
+
+    function typeWriter() {
+        const currentText = texts[index];
+        
+        if (!isDeleting) {
+            elem.textContent = currentText.substring(0, charIndex++);
+            if (charIndex > currentText.length) {
+                isDeleting = true;
+                setTimeout(typeWriter, 1500);
+            } else {
+                setTimeout(typeWriter, speed);
+            }
+        } else {
+            elem.textContent = currentText.substring(0, charIndex--);
+            if (charIndex < 0) {
+                isDeleting = false;
+                index = (index + 1) % texts.length;
+                setTimeout(typeWriter, 300);
+            } else {
+                setTimeout(typeWriter, speed / 2);
+            }
+        }
+    }
+
+    // بدء التأثير فور تحميل الصفحة
+    document.addEventListener('DOMContentLoaded', typeWriter);
+    
+    
     </script>
 
 </body>
