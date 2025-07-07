@@ -5,74 +5,353 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إدارة حلقات التحفيظ</title>
     <link rel="icon" type="image/png" href="https://www2.0zz0.com/2025/02/01/17/252796576.png">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* إعدادات عامة */
-        body {
-            margin: 0;
-            font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #274778, #1b3b59);
-            color: #fff;
-            overflow-x: hidden;
+        :root {
+            --primary-color: #5DADE2;
+            --primary-dark: #1a60a7;
+            --secondary-color: #274778;
+            --accent-color: #e74c3c;
+            --text-light: #f0f0f0;
+            --text-dark: #2d3436;
+            --bg-gradient: linear-gradient(135deg, #274778, #1b3b59);
+            --card-bg: rgba(0, 0, 0, 0.6);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
-        /* قسم الاصدارات القديمه */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
-        /* إعدادات عامة */
-/* إعدادات عامة */
-body {
-    margin: 0;
-    font-family: 'Cairo', sans-serif;
-    background: linear-gradient(135deg, #274778, #1b3b59);
-    color: #fff;
-    overflow-x: hidden;
-}
-
-/* إضافة قسم الإصدارات السابقة */
-.previous-versions {
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    margin: 30px auto;
-    padding: 20px;
-    text-align: center;
-    max-width: 800px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.previous-versions h3 {
-    color: #fff;
-    font-size: 2em;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 5px #000;
-}
-
-.previous-versions p {
-    color: #ddd;
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-
-/* أزرار التنقل مع التأثيرات */
-.previous-versions a {
-    display: inline-block;
-    margin: 10px 0;
-    padding: 12px 30px;
-    font-size: 1.2em;
-    color: #fff;
-    background: #5DADE2;
-    text-decoration: none;
-    border-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, background 0.3s ease;
-}
-
-.previous-versions a:hover {
-    background: #1a60a7;
-    transform: scale(1.05);
-}
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
         
-        /* قسم الصور */
-.gallery {
+        /* تصميم الشريط العلوي */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(93, 173, 226, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 40px;
+            border-radius: 50%;
+        }
+        
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover, 
+        .nav-links a.active {
+            background: rgba(93, 173, 226, 0.2);
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* تصميم الرأس */
+        header {
+            text-align: center;
+            padding: 150px 20px 100px;
+            background: rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .header-content {
+            max-width: 800px;
+            z-index: 10;
+        }
+        
+        header h1 {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin: 0;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .type-container {
+            margin: 30px 0;
+        }
+        
+        #animatedText {
+            font-size: 1.8rem;
+            color: white;
+            padding-right: 5px;
+            font-weight: 600;
+        }
+        
+        .cursor {
+            color: white;
+            animation: blink 1s infinite;
+            font-weight: bold;
+        }
+        
+        .header-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            text-align: center;
+            background: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(93, 173, 226, 0.1);
+        }
+        
+        /* تصميم الأقسام العامة */
+        section {
+            padding: 100px 20px;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* تصميم قسم المميزات */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(93, 173, 226, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .feature-card p {
+            color: #d3d3d3;
+        }
+        
+        /* تصميم قسم التحميل */
+        .download-section {
+            background: rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+        
+        .download-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .download-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            width: 300px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .download-card:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-color);
+        }
+        
+        .download-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .download-card p {
+            color: #d3d3d3;
+            margin-bottom: 20px;
+        }
+        
+        /* تصميم قسم الإصدارات القديمة */
+        .version-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .version-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .version-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+        
+        .version-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        
+        /* تصميم قسم الصور */
+        .gallery {
     margin: 30px auto;
     text-align: center;
 }
@@ -102,6 +381,11 @@ body {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
+
+.white-line::after {
+    background: #ffffff;
+}
+
         
         /* إعداد الحاوية لتكون خلفية ثابتة */
 .circles {
@@ -118,837 +402,619 @@ body {
     font-size: 24px; /* حجم الخط */
     margin-bottom: 20px; /* مسافة أسفل العنوان */
 }
-
-/* إعداد الدوائر */
-.circle {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15); /* اللون الأبيض شبه الشفاف */
-    animation: move 25s infinite linear; /* تطبيق الحركة على الدوائر */
-}
-
-/* تحريك الدوائر بطريقة جميلة، مع مسارات متنوعة لكل دائرة */
-@keyframes move {
-    0% {
-        transform: translate(-50%, -50%); /* البداية من المركز */
-    }
-    25% {
-        transform: translate(50vw, 20vh); /* دائرة تتحرك إلى اليمين والأعلى */
-    }
-    50% {
-        transform: translate(-20vw, 40vh); /* دائرة تتحرك إلى اليسار والأسفل */
-    }
-    75% {
-        transform: translate(30vw, -30vh); /* دائرة تتحرك إلى اليمين والأسفل */
-    }
-    100% {
-        transform: translate(-30vw, 50vh); /* العودة إلى مكان آخر في الأسفل */
-    }
-}
-
-/* تخصيص كل دائرة لتكون بأحجام ومواقع عشوائية وتتحرك في اتجاهات مختلفة */
-.circle:nth-child(1) { 
-    width: 15vw;
-    height: 15vw;
-    top: 5%;
-    left: 10%;
-    animation: move1 25s infinite linear; /* تخصيص حركة مختلفة */
-}
-
-.circle:nth-child(2) { 
-    width: 10vw;
-    height: 10vw;
-    top: 40%;
-    left: 50%;
-    animation: move2 30s infinite linear; /* تخصيص حركة مختلفة */
-}
-
-.circle:nth-child(3) { 
-    width: 20vw;
-    height: 20vw;
-    top: 60%;
-    left: 20%;
-    animation: move3 35s infinite linear; /* تخصيص حركة مختلفة */
-}
-
-.circle:nth-child(4) { 
-    width: 12vw;
-    height: 12vw;
-    top: 80%;
-    left: 70%;
-    animation: move4 40s infinite linear; /* تخصيص حركة مختلفة */
-}
-
-.circle:nth-child(5) { 
-    width: 18vw;
-    height: 18vw;
-    top: 30%;
-    left: 80%;
-    animation: move5 45s infinite linear; /* تخصيص حركة مختلفة */
-}
-
-/* تحريك الدوائر باستخدام حركات خاصة مختلفة */
-@keyframes move1 {
-    0% { transform: translate(-50%, -50%); }
-    25% { transform: translate(40vw, 10vh); }
-    50% { transform: translate(-10vw, 50vh); }
-    75% { transform: translate(20vw, -20vh); }
-    100% { transform: translate(-30vw, 40vh); }
-}
-
-@keyframes move2 {
-    0% { transform: translate(-50%, -50%); }
-    25% { transform: translate(50vw, 0); }
-    50% { transform: translate(30vw, 30vh); }
-    75% { transform: translate(-40vw, 10vh); }
-    100% { transform: translate(10vw, -40vh); }
-}
-
-@keyframes move3 {
-    0% { transform: translate(-50%, -50%); }
-    25% { transform: translate(-40vw, 20vh); }
-    50% { transform: translate(20vw, 40vh); }
-    75% { transform: translate(10vw, -30vh); }
-    100% { transform: translate(-20vw, 50vh); }
-}
-
-@keyframes move4 {
-    0% { transform: translate(-50%, -50%); }
-    25% { transform: translate(-20vw, 40vh); }
-    50% { transform: translate(40vw, 20vh); }
-    75% { transform: translate(-10vw, -20vh); }
-    100% { transform: translate(30vw, 10vh); }
-}
-
-@keyframes move5 {
-    0% { transform: translate(-50%, -50%); }
-    25% { transform: translate(30vw, -30vh); }
-    50% { transform: translate(-30vw, 40vh); }
-    75% { transform: translate(10vw, 20vh); }
-    100% { transform: translate(40vw, -40vh); }
-}
-
-
-        /* خلفية النجوم */
-        .stars {
-            position: absolute;
-            width: 100%;
-            height: 50%; /* تعديل المساحة */
-            bottom: 0;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 2px, transparent 2px);
-            background-size: 30px 30px;
-            opacity: 0.6;
-            z-index: -1;
+        
+        /* تصميم قسم التواصل */
+        .contact-section {
+            background: rgba(0, 0, 0, 0.5);
         }
-
-        header {
-            text-align: center;
-            padding: 50px 20px;
-            background: rgba(0, 0, 0, 0.6);
-            border-bottom: 4px solid #5DADE2;
-            position: relative;
-            overflow: hidden;
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
         }
-
-        header h1 {
-            font-size: 3em;
-            color: #5DADE2;
-            margin: 0;
-            text-shadow: 2px 2px 5px #000;
-        }
-
-        header p {
-            font-size: 1.5em;
-            color: #ddd;
-        }
-
-        .content {
-            padding: 20px;
+        
+        .contact-info {
             text-align: center;
         }
-
-        .content h2 {
-            font-size: 2.5em;
-            color: #5DADE2;
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .contact-info p {
+            color: #d3d3d3;
+            margin-bottom: 30px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .contact-form {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-group {
             margin-bottom: 20px;
         }
-
-        .features {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-        }
-
-        .features li {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px 0;
-            font-size: 1.2em;
-            color: #d3d3d3;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .features li:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .actions {
-            margin-top: 30px;
-        }
-
-        .btn {
+        
+        .form-group label {
             display: block;
-            margin: 10px auto;
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.4);
+            color: white;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-btn {
+            width: 100%;
             padding: 15px;
-            font-size: 1.2em;
+            font-size: 1.1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .form-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        /* تصميم القسم السفلي */
+        footer {
+            background: linear-gradient(135deg, #0a1a2f, #06121f);
+            padding: 40px 20px 20px;
             text-align: center;
-            background: #5DADE2;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 10px;
-            max-width: 300px;
-            transition: transform 0.3s, box-shadow 0.3s, background 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-            background: #1a60a7;
-        }
-
-        .note {
-            font-size: 1.2em;
-            background: rgba(255, 255, 255, 0.1);
-            margin-top: 30px;
-            padding: 15px;
-            border-radius: 10px;
-            color: #f0f0f0;
-        }
-
-        /* تعديل قسم التواصل */
-        .contact {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px;
-            text-align: center;
-            margin-top: 30px;
             position: relative;
         }
-
-        .contact h2 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            color: #5DADE2;
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
         }
-
-        .contact a {
-            display: inline-block;
-            margin: 8px;
-            padding: 12px 25px;
-            font-size: 1.1em;
-            color: #fff;
-            background: #274778;
-            border-radius: 25px;
+        
+        .copyright-text {
+            color: #d3d3d3;
+            font-size: 1rem;
+        }
+        
+        .developer {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .developer-link {
+            color: var(--primary-color) !important;
             text-decoration: none;
-            transition: transform 0.3s, background 0.3s;
+            font-weight: 600;
+            transition: var(--transition);
         }
-
-        .contact a:hover {
-            transform: translateY(-5px);
-            background: #5DADE2;
-        }
-
-        /* خلفية النجوم داخل قسم التواصل */
-        .contact .stars {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 2px, transparent 2px);
-            background-size: 30px 30px;
-            opacity: 0.5;
-            z-index: -1;
-        }
-
-        footer {
-            margin-top: 50px;
-            padding: 20px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            color: #ddd;
-        }
-
-        footer a {
-            color: #5DADE2;
-            text-decoration: none;
-        }
-
-        footer a:hover {
+        
+        .developer-link:hover {
             text-decoration: underline;
         }
-
-        /* شريط التنقل الثابت */
-        .navbar {
-            position: sticky;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-            z-index: 1000;
-            transition: top 0.3s;
-        }
-
-        .navbar a {
-            color: #fff;
-            margin: 0 15px;
-            font-size: 1.2em;
-            text-decoration: none;
-        }
-
-        .navbar a:hover {
-            color: #5DADE2;
+        
+        /* تأثيرات الحركة والرسوم المتحركة */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
         
-              /*  الملاحضة  */
-      
-.custom-note {
-  width: 90%; /* عرض متجاوب */
-  max-width: 600px; /* أقصى عرض */
-  margin: 30px auto; /* توسيط الملاحظة وإضافة مسافة */
-  padding: 20px 20px 20px 40px; /* تعديل الحشو (يمين أقل لتعويض الخط) */
-  background-color: #1d1e21; /* لون الخلفية */
-  border-radius: 12px; /* حواف مدورة */
-  position: relative;
-  isolation: isolate; /* لعزل العناصر */
-}
-
-.custom-note::before {
-  content: '';
-  position: absolute;
-  width: 4px; /* عرض الخط العمودي */
-  height: 80%; /* ارتفاع الخط العمودي */
-  background-color: #373c3d; /* لون الخط العمودي */
-  top: 10%; /* تحديد المسافة من الأعلى */
-  right: 20px; /* نقل الخط إلى اليمين مع مسافة مناسبة */
-  z-index: 10; /* التأكد من ظهور الخط فوق الخلفية */
-  border-radius: 2px; /* حواف مدورة للخط */
-}
-
-.note-text {
-  color: #9c9c9c; /* لون النص */
-  font-size: 1.1em; /* حجم الخط */
-  line-height: 1.6; /* تباعد الأسطر */
-  white-space: pre-wrap; /* الحفاظ على التنسيق */
-  margin: 0; /* إزالة الهوامش الافتراضية */
-  padding-right: 40px; /* مسافة بين النص والخط (مماثلة لليسار) */
-}
-
-.note-text .font-semibold {
-  font-weight: 600; /* سمك الخط للنص الغامق */
-  color: #5DADE2; /* لون النص الغامق */
-}
-
-/* تصميم متجاوب للشاشات الصغيرة */
-@media (max-width: 768px) {
-  .custom-note {
-    padding: 15px 15px 15px 30px; /* تقليل الحشو على الشاشات الصغيرة */
-  }
-
-  .custom-note::before {
-    right: 15px; /* تقليل المسافة بين الخط والنص على الشاشات الصغيرة */
-  }
-
-  .note-text {
-    font-size: 1em; /* تقليل حجم الخط على الشاشات الصغيرة */
-    padding-right: 30px; /* تقليل المسافة بين النص والخط */
-  }
-}.custom-note {
-  width: 90%; /* عرض متجاوب */
-  max-width: 600px; /* أقصى عرض */
-  margin: 30px auto; /* توسيط الملاحظة وإضافة مسافة */
-  padding: 20px 20px 20px 40px; /* تعديل الحشو (يمين أقل لتعويض الخط) */
-  background-color: #1d1e21; /* لون الخلفية */
-  border-radius: 12px; /* حواف مدورة */
-  position: relative;
-  isolation: isolate; /* لعزل العناصر */
-}
-
-.custom-note::before {
-  content: '';
-  position: absolute;
-  width: 4px; /* عرض الخط العمودي */
-  height: 80%; /* ارتفاع الخط العمودي */
-  background-color: #373c3d; /* لون الخط العمودي */
-  top: 10%; /* تحديد المسافة من الأعلى */
-  right: 20px; /* نقل الخط إلى اليمين مع مسافة مناسبة */
-  z-index: 10; /* التأكد من ظهور الخط فوق الخلفية */
-  border-radius: 2px; /* حواف مدورة للخط */
-}
-
-.note-text {
-  color: #9c9c9c; /* لون النص */
-  font-size: 1.1em; /* حجم الخط */
-  line-height: 1.6; /* تباعد الأسطر */
-  white-space: pre-wrap; /* الحفاظ على التنسيق */
-  margin: 0; /* إزالة الهوامش الافتراضية */
-  padding-right: 40px; /* مسافة بين النص والخط (مماثلة لليسار) */
-}
-
-.note-text .font-semibold {
-  font-weight: 600; /* سمك الخط للنص الغامق */
-  color: #5DADE2; /* لون النص الغامق */
-}
-
-/* تصميم متجاوب للشاشات الصغيرة */
-@media (max-width: 768px) {
-  .custom-note {
-    padding: 15px 15px 15px 30px; /* تقليل الحشو على الشاشات الصغيرة */
-  }
-
-  .custom-note::before {
-    right: 15px; /* تقليل المسافة بين الخط والنص على الشاشات الصغيرة */
-  }
-
-  .note-text {
-    font-size: 1em; /* تقليل حجم الخط على الشاشات الصغيرة */
-    padding-right: 30px; /* تقليل المسافة بين النص والخط */
-  }
-}
-
-
-    /* تمييز أزرار الإصدار الأخير */
-.latest-btn {
-    background: #5DADE2;
-    position: relative;
-    padding-right: 45px;
-}
-
-.latest-btn:hover {
-    background: #219a52;
-}
-
-.latest-btn::after {
-    content: "الأحدث";
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: #e74c3c;
-    color: white;
-    padding: 3px 10px;
-    border-radius: 5px;
-    font-size: 0.7em;
-    font-weight: bold;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-/* تعديل عنوان الإصدارات السابقة */
-.previous-versions h3 {
-    color: #95a5a6;
-    border-bottom: 2px solid #95a5a6;
-    padding-bottom: 10px;
-    display: inline-block;
-}
-
-
-    /*  كود وصف الموقع  */
-    
-   .type-container {
-        display: inline-block;
-        position: relative;
-        margin: 15px 0;
-    }
-
-    #animatedText {
-        font-size: 1.5em;
-        color: white; /* اللون الأبيض */
-        padding-right: 5px;
-    }
-
-    .cursor {
-        color: white;
-        animation: blink 1s infinite;
-        font-weight: bold;
-    }
-
-    @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-    }
-    
-    
-    /*  القسم السفلي  */
-
-   /* تخصيص القfooter {
-    background: linear-gradient(135deg, #0a1a2f, #06121f);
-    padding: 35px 20px 20px;
-    margin-top: 60px;
-    position: relative;
-    overflow: hidden;
-    font-family: 'Cairo', sans-serif;
-}
-
-/* محتوى الفوتر المدمج */
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    position: relative;
-    z-index: 1;
-}
-
-/* العناصر النصية المنسّقة */
-.copyright-text {
-    color: #d3d3d3;
-    font-size: 0.95em;
-    padding: 4px 10px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 6px;
-}
-
-/* الفاصل المدمج */
-.separator {
-    color: #5DADE2;
-    opacity: 0.6;
-    margin: 0 4px;
-    font-size: 1.2em;
-    transform: rotate(8deg);
-    display: inline-block;
-}
-
-/* قسم المطور المدمج */
-.developer {
-    padding: 5px 10px;
-    border-radius: 20px;
-    background: rgba(93,173,226,0.08);
-    transition: all 0.25s ease;
-}
-
-.developer:hover {
-    background: rgba(93,173,226,0.15);
-}
-
-/* رابط المطور المنسّق */
-.developer-link {
-    color: #5DADE2 !important;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    position: relative;
-    font-size: 0.95em;
-}
-
-/* تأثير الخط السفلي الديناميكي */
-.developer-link::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 0;
-    height: 1.5px;
-    background: #5DADE2;
-    transition: width 0.2s ease;
-}
-
-.developer-link:hover::after {
-    width: 100%;
-}
-
-/* تحسينات الإيموجي المتحرك */
-.emoji {
-    animation: subtleFloat 2.5s ease-in-out infinite;
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
-}
-
-@keyframes subtleFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-2px) rotate(2deg); }
-}
-
-/* تحسينات الجوال */
-@media (max-width: 768px) {
-    footer {
-        padding: 30px 15px 15px;
-        margin-top: 40px;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        gap: 3px;
-    }
-    
-    .separator {
-        transform: rotate(90deg) scale(0.7);
-        margin: 2px 0;
-    }
-    
-    .copyright-text {
-        font-size: 0.9em;
-        padding: 3p.features {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.features li {
-    background: #ffffff; /* خلفية بيضاء صلبة */
-    border-left: 4px solid #5DADE2; /* إبقاء الحدود الزرقاء */
-    margin: 20px 0;
-    padding: 20px;
-    border-radius: 8px;
-    backdrop-filter: blur(5px);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* ظل أنعم */
-    color: #2d3436; /* لون نص داكن */
-}
-
-.features li::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(93, 173, 226, 0.1), /* تدرج أزرق فاتح */
-        transparent
-    );
-    transition: 0.5s;
-}
-
-.features li:hover {
-    transform: translateX(10px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* ظل أكثر وضوحًا */
-    background: #f8f9fa; /* خلفية رمادية فاتحة عند hover */
-}
-
-.features li:hover::before {
-    right: 100%;
-}
-
-/* إضافة تأثيرات نصية */
-.features li {
-    font-weight: 500;
-    letter-spacing: -0.5px;
-}
-
-.features li::after {
-    content: "•";
-    color: #5DADE2;
-    font-size: 1.8em;
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-}x 8px;
-    }
-    
-    .developer {
-        padding: 4px 8px;
-    }
-}
-
-
-   /* تعديلات أنيقة لقائمة المميزات */
-   
-        .features {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
-
-        .features li {
-            background: rgba(255,255,255,0.05);
-            border-left: 4px solid #5DADE2;
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 8px;
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-
-        .features li::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: -100%;
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* دوائر الخلفية المتحركة */
+        .circles {
+            position: fixed;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255,255,255,0.1),
-                transparent
-            );
-            transition: 0.5s;
-        }
-
-        .features li:hover {
-            transform: translateX(10px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-
-        .features li:hover::before {
-            right: 100%;
+            overflow: hidden;
+            z-index: -1;
+            top: 0;
+            left: 0;
         }
         
-        #features h2 {
-    color: #ffffff !important;
-    border-bottom: 2px solid #5DADE2;
-    display: inline-block;
-    padding-bottom: 8px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .circle:nth-child(1) { 
+            width: 15vw;
+            height: 15vw;
+            top: 5%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .circle:nth-child(2) { 
+            width: 10vw;
+            height: 10vw;
+            top: 40%;
+            left: 50%;
+            animation-delay: -5s;
+        }
+        
+        .circle:nth-child(3) { 
+            width: 20vw;
+            height: 20vw;
+            top: 60%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+        
+        .circle:nth-child(4) { 
+            width: 12vw;
+            height: 12vw;
+            top: 80%;
+            left: 70%;
+            animation-delay: -15s;
+        }
+        
+        .circle:nth-child(5) { 
+            width: 18vw;
+            height: 18vw;
+            top: 30%;
+            left: 80%;
+            animation-delay: -20s;
+        }
+        
+        /* ملاحظات */
+        .custom-note {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 40px auto;
+            max-width: 700px;
+            position: relative;
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        .custom-note h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .custom-note p {
+            color: #d3d3d3;
+            line-height: 1.7;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 2.8rem;
+            }
+            
+            #animatedText {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 5%;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .header-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .download-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .download-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- شريط التنقل الثابت -->
-    <div class="navbar" id="navbar">
-        <a href="#features">المميزات</a>
-        <a href="#download">التحميل</a>
-        <a href="#contact">تواصل معنا</a>
-    </div>
+    <!-- شريط التنعل الثابت -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <img src="https://www2.0zz0.com/2025/02/01/17/252796576.png" alt="شعار إدارة حلقات التحفيظ">
+            <div class="logo-text">إدارة حلقات التحفيظ</div>
+        </div>
+        
+        <div class="nav-links">
+            <a href="#features" class="active"><i class="fas fa-star"></i> المميزات</a>
+            <a href="#download"><i class="fas fa-download"></i> التحميل</a>
+            <a href="#gallery"><i class="fas fa-images"></i> معرض الصور</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> تواصل معنا</a>
+        </div>
+        
+        <div class="mobile-toggle" id="mobileToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
 
     <!-- رأس الصفحة -->
     <header>
-        <h1>تطبيق إدارة حلقات التحفيظ</h1>
-    <div class="type-container">
-        <span id="animatedText"></span>
-        <span class="cursor">|</span>
-    </div>
+        <div class="header-content">
+            <h1>تطبيق إدارة حلقات التحفيظ</h1>
+            <div class="type-container">
+                <span id="animatedText"></span>
+                <span class="cursor">|</span>
+            </div>
+            <p style="font-size: 1.3rem; margin: 20px 0; max-width: 700px;">
+                حل متكامل لإدارة حلقات القرآن الكريم وتتبع تقدم الطلاب بطريقة احترافية وسهلة
+            </p>
+            
+            <div class="header-buttons">
+                <a href="#download" class="btn"><i class="fas fa-download"></i> تحميل التطبيق</a>
+                <a href="#features" class="btn btn-outline"><i class="fas fa-info-circle"></i> تعرف أكثر</a>
+            </div>
+        </div>
+        
+        <!-- خلفية الدوائر -->
+        <div class="circles">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
     </header>
-    
-    <!-- خلفية الدوائر -->
-<div class="circles">
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-</div>
 
     <!-- قسم المميزات -->
-    <div class="content" id="features">
-        <h2>مميزات التطبيق</h2>
-        <ul class="features">
-            <li>إرسال التقرير اليومي مباشرة إلى ولي أمر الطالب</li>
-            <li>الوضع الليلي لتجربة استخدام مريحة أثناء الليل</li>
-            <li>إمكانية تخصيص الطلاب (ذكور/إناث) لتسهيل التنظيم</li>
-            <li>إنشاء تقارير يومية، أسبوعية، وشهرية بضغطة واحدة</li>
-            <li>إدارة الحلقات والطلاب وحفظ البيانات بسهولة</li>
-            <li>حفظ واسترجاع النسخ الاحتياطية بنقرة واحدة</li>
-            <li>عرض الحلقات والدخول إليها عبر "الوصول السريع"</li>
-            <li>تتبع حضور وغياب الطلاب بدقة</li>
-            <li>التطبيق مجاني بالكامل وبدون إعلانات</li>
-            <li>تصميم بسيط وسهل الاستخدام يناسب جميع الفئات</li>
-        </ul>
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">مميزات التطبيق</h2>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <h3>إرسال التقارير</h3>
+                    <p>إرسال التقرير اليومي مباشرة إلى ولي أمر الطالب بشكل تلقائي وفوري</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>الوضع الليلي</h3>
+                    <p>وضع ليلي مريح للعين يتناسب مع الاستخدام في الأوقات الليلية</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>إدارة الطلاب</h3>
+                    <p>تخصيص الطلاب (ذكور/إناث) وتصنيفهم لتسهيل عملية التنظيم</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>تقارير متقدمة</h3>
+                    <p>إنشاء تقارير يومية، أسبوعية، وشهرية بضغطة واحدة وبصيغ متعددة</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>النسخ الاحتياطي</h3>
+                    <p>حفظ واسترجاع النسخ الاحتياطية بسهولة وبضغطة واحدة</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>الوصول السريع</h3>
+                    <p>عرض الحلقات والدخول إليها عبر واجهة "الوصول السريع" البسيطة</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- الأزرار -->
-        <div class="actions" id="download">
-    <h3 style="color: #FFFFFF; margin: 20px 0;">الإصدار الرابع (أحدث نسخة)</h3>
-    <a href="https://www.dropbox.com/scl/fi/fe2i6vt3wtl3rgsfgu7fj/_4.apk?rlkey=kwxdqhdz439fk12gn146js1ft&st=yu2d9370&dl=1" class="btn latest-btn">التحميل المباشر
-    <a href="https://www.mediafire.com/file/b7q5w1rm72tsxlp/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_4.apk/file" class="btn latest-btn">تحميل من MediaFire</a>
-    <p style="font-size: 1.2em; color: #ddd; margin-top: 20px;">
-        <a href="https://youtu.be/ucYwvFyW97M?si=An7FXYN9gtSpG-ex" target="_blank" style="color: #5DADE2; text-decoration: none;">مشاهدة الفيديو التعريفي للتطبيق</a>
-    </p>
-</div>
-        
-        <!-- قسم الإصدارات السابقة -->
-<div class="previous-versions">
-    <h3>الإصدارات السابقة</h3>
-    <p>يمكنك تحميل الإصدارات السابقة من التطبيق هنا:</p>
-    <div class="actions">
-       <a href="https://www.mediafire.com/file/sc88g4vsmgwlfv9/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_3.apk/file" target="_blank" class="btn-download">تحميل الإصدار 3</a>
-        <a href="https://www.mediafire.com/file/z6zl1xnu94mbul9/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_1.1.apk/file" target="_blank" class="btn-download">تحميل الإصدار 2</a>
-        <a href="https://www.mediafire.com/file/hu36qye614p7rj7/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8.apk/file" target="_blank" class="btn-download">تحميل الإصدار 1</a>
-    </div>
-</div>
+    <!-- قسم التحميل -->
+    <section id="download" class="download-section">
+        <div class="container">
+            <h2 class="section-title">تحميل التطبيق</h2>
+            
+            <div class="version-badge">الإصدار الرابع (الأحدث)</div>
+            <p style="max-width: 700px; margin: 0 auto 30px; font-size: 1.1rem;">
+                حمّل أحدث إصدار من التطبيق واستمتع بجميع الميزات المحسّنة والتحديثات الجديدة
+            </p>
+            
+            <a href="https://youtu.be/ucYwvFyW97M?si=An7FXYN9gtSpG-ex" target="_blank" class="btn" style="margin-bottom: 30px;">
+                <i class="fas fa-play-circle"></i> مشاهدة الفيديو التعريفي
+            </a>
+            
+            <div class="download-options">
+                <div class="download-card">
+                    <h3><i class="fas fa-cloud-download-alt"></i> التحميل المباشر</h3>
+                    <p>تحميل مباشر وسريع من سيرفرات آمنة</p>
+                    <a href="https://www.dropbox.com/scl/fi/fe2i6vt3wtl3rgsfgu7fj/_4.apk?rlkey=kwxdqhdz439fk12gn146js1ft&st=yu2d9370&dl=1" class="btn">تحميل الآن</a>
+                </div>
+                
+                <div class="download-card">
+                    <h3><i class="fab fa-medapps"></i> MediaFire</h3>
+                    <p>تحميل من منصة MediaFire الموثوقة</p>
+                    <a href="https://www.mediafire.com/file/b7q5w1rm72tsxlp/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_4.apk/file" class="btn">تحميل الآن</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- كود الملاحضة -->
+    <!-- الإصدارات القديمة -->
+    <section id="previous">
+        <div class="container">
+            <h2 class="section-title">الإصدارات السابقة</h2>
+            
+            <div class="version-grid">
+                <div class="version-card">
+                    <h4>الإصدار الثالث</h4>
+                    <p>أحدث إصدار قبل النسخة الحالية</p>
+                    <a href="https://www.mediafire.com/file/sc88g4vsmgwlfv9/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_3.apk/file" class="btn" style="margin-top: 15px;">تحميل الإصدار 3</a>
+                </div>
+                
+                <div class="version-card">
+                    <h4>الإصدار الثاني</h4>
+                    <p>إصدار محسّن مع ميزات جديدة</p>
+                    <a href="https://www.mediafire.com/file/z6zl1xnu94mbul9/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_1.1.apk/file" class="btn" style="margin-top: 15px;">تحميل الإصدار 2</a>
+                </div>
+                
+                <div class="version-card">
+                    <h4>الإصدار الأول</h4>
+                    <p>الإصدار الأساسي من التطبيق</p>
+                    <a href="https://www.mediafire.com/file/hu36qye614p7rj7/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8.apk/file" class="btn" style="margin-top: 15px;">تحميل الإصدار 1</a>
+                </div>
+            </div>
+            
+            <div class="custom-note">
+                <h4><i class="fas fa-info-circle"></i> ملاحظة هامة</h4>
+                <p>هذا هو الإصدار الرابع من التطبيق، ونحن نعمل على تطويره وتحديثه باستمرار. يوصى دائماً باستخدام أحدث إصدار للاستفادة من جميع الميزات والتحديثات الأمنية.</p>
+            </div>
+        </div>
+    </section>
 
-  <div class="custom-note">
-  <p class="note-text">
-    <span class="font-semibold">ملاحظة:</span> هذا هو الإصدار الرابع من التطبيق، ونحن نعمل على تطويره وتحديثه باستمرار.
-  </p>
-</div>
-
-
-    </div>
-    
-    <!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معرض الصور</title>
-    <link rel="stylesheet" href="style.css"> <!-- الربط مع ملف CSS -->
-</head>
-<body>
+    <!-- معرض الصور -->
     <section class="gallery">
-        <h2>صور من التطبيق</h2>
-        <div class="gallery-grid">
+    <h2 class="section-title white-line">صور من التطبيق</h2>
+    <div class="gallery-grid">
+        <!-- الصور -->
             <img src="https://www2.0zz0.com/2024/12/26/08/875661458.jpg" alt="صورة 1">
             <img src="https://www2.0zz0.com/2024/12/26/08/560766280.jpg" alt="صورة 2">
             <img src="https://www2.0zz0.com/2024/12/26/10/587672596.jpg" alt="صورة 3">
             <img src="https://www2.0zz0.com/2024/12/26/10/309818401.jpg" alt="صورة 4">
         </div>
     </section>
-</body>
-</html>
 
     <!-- قسم التواصل -->
-    <section class="contact" id="contact">
-        <h2>تواصل معنا</h2>
-        <a href="https://wa.me/+967716100062" target="_blank">واتساب</a>
-        <a href="https://t.me/abdalrhmantariq" target="_blank">تليجرام</a>
-        <a href="https://www.instagram.com/_x7qo?igsh=MXNuYnR1cGJ3aWtibQ==" target="_blank">إنستغرام</a>
-
-        <!-- إضافة النجوم داخل قسم التواصل -->
-        <div class="stars"></div>
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">تواصل معنا</h2>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>نحن هنا لمساعدتك</h3>
+                    <p>لأي استفسار أو ملاحظة حول التطبيق، لا تتردد في التواصل معنا عبر الوسائل التالية:</p>
+                    
+                    <div class="social-links">
+                        <a href="https://wa.me/+967716100062" target="_blank" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://t.me/abdalrhmantariq" target="_blank" class="social-link">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="https://www.instagram.com/_x7qo?igsh=MXNuYnR1cGJ3aWtibQ==" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-color);">أرسل رسالة</h3>
+                    <form id="messageForm">
+                        <div class="form-group">
+                            <label for="name">الاسم الكامل</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">الرسالة</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-btn">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- القسم السفلي -->
-   <footer>
-  <div class="footer-wave"></div>
-  <p class="footer-content">
-    <span class="copyright-text">© 2025 إدارة حلقات التحفيظ</span>
-    <span class="separator">|</span>
-    <span class="developer">
-      تم التطوير بواسطة
-      <a href="https://wa.me/+967716100062" target="_blank" class="developer-link">
-        عبدالرحمن طارق الفلق
-      </a>
-    </span>
-  </p>
-</footer>
+    <footer>
+        <div class="footer-content">
+            <div class="copyright-text">
+                © 2025 إدارة حلقات التحفيظ - جميع الحقوق محفوظة
+            </div>
+            <div class="developer">
+                تم التطوير بواسطة 
+                <a href="https://wa.me/+967716100062" target="_blank" class="developer-link">
+                    عبدالرحمن طارق الفلق
+                </a>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // JavaScript لإخفاء الشريط عند التمرير لأسفل
+        // التأثير الكتابي للرأس
+        const texts = [
+            "إدارة الحلقات بأسلوب مبتكر وسهل",
+            "تنظيم الحفظ بذكاء وفعالية",
+            "تتبع التقدم اليومي للطلاب",
+            "واجهة تفاعلية بسيطة للجميع",
+            "إرسال تقارير تلقائية للآباء"
+        ];
+
+        let index = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const speed = 100;
+        const elem = document.getElementById("animatedText");
+
+        function typeWriter() {
+            const currentText = texts[index];
+            
+            if (!isDeleting) {
+                elem.textContent = currentText.substring(0, charIndex++);
+                if (charIndex > currentText.length) {
+                    isDeleting = true;
+                    setTimeout(typeWriter, 1500);
+                } else {
+                    setTimeout(typeWriter, speed);
+                }
+            } else {
+                elem.textContent = currentText.substring(0, charIndex--);
+                if (charIndex < 0) {
+                    isDeleting = false;
+                    index = (index + 1) % texts.length;
+                    setTimeout(typeWriter, 300);
+                } else {
+                    setTimeout(typeWriter, speed / 2);
+                }
+            }
+        }
+
+        // شريط التنقل الثابت
         let navbar = document.getElementById("navbar");
         let lastScrollTop = 0;
 
@@ -956,58 +1022,96 @@ body {
             let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
             if (currentScroll > lastScrollTop) {
-                navbar.style.top = "-60px"; // إخفاء الشريط
+                navbar.style.top = "-80px";
             } else {
-                navbar.style.top = "0"; // إظهار الشريط
+                navbar.style.top = "0";
             }
 
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // يمنع الانتقال إلى أعلى الصفحة في بعض الحالات
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            
+            // إضافة وتفعيل الروابط النشطة
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    const currentId = section.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${currentId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
         });
-        
-        // كود تاثير ضهور وصف الموقع
-        
-    const texts = [
-        "إدارة الحلقات بأسلوب مبتكر وسهل",
-        "تنظيم الحفظ بذكاء وفعالية",
-        "تتبع التقدم اليومي للطلاب",
-        "واجهة تفاعلية بسيطة للجميع",
-        "إرسال تقارير تلقائية للآباء"
-    ];
 
-    let index = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const speed = 100;
-    const elem = document.getElementById("animatedText");
-
-    function typeWriter() {
-        const currentText = texts[index];
+        // تبديل القائمة على الجوال
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.querySelector('.nav-links');
         
-        if (!isDeleting) {
-            elem.textContent = currentText.substring(0, charIndex++);
-            if (charIndex > currentText.length) {
-                isDeleting = true;
-                setTimeout(typeWriter, 1500);
-            } else {
-                setTimeout(typeWriter, speed);
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // إغلاق القائمة عند النقر على رابط
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // تحريك سلس عند النقر على الروابط
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // بدء التأثير الكتابي
+        document.addEventListener('DOMContentLoaded', () => {
+            typeWriter();
+            
+            // إضافة تأثيرات ظهور للعناصر عند التمرير
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.feature-card, .download-card, .version-card, .gallery-item').forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+            
+            // إرسال النموذج
+            const messageForm = document.getElementById('messageForm');
+            if (messageForm) {
+                messageForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('تم إرسال رسالتك بنجاح! سنتواصل معك في أقرب وقت.');
+                    this.reset();
+                });
             }
-        } else {
-            elem.textContent = currentText.substring(0, charIndex--);
-            if (charIndex < 0) {
-                isDeleting = false;
-                index = (index + 1) % texts.length;
-                setTimeout(typeWriter, 300);
-            } else {
-                setTimeout(typeWriter, speed / 2);
-            }
-        }
-    }
-
-    // بدء التأثير فور تحميل الصفحة
-    document.addEventListener('DOMContentLoaded', typeWriter);
-    
-    
+        });
     </script>
-
 </body>
 </html>
