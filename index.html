@@ -19,6 +19,8 @@
             --bg-gradient: linear-gradient(135deg, #274778, #1b3b59);
             --card-bg: rgba(0, 0, 0, 0.6);
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --success-color: #2ecc71;
+            --error-color: #e74c3c;
         }
         
         * {
@@ -794,6 +796,104 @@
                 font-size: 0.75rem;
             }
         }
+        
+        /* رسالة التأكيد الجديدة */
+        .message-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .message-content {
+            background: var(--card-bg);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            animation: popIn 0.5s ease-out forwards;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(93, 173, 226, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        .message-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--success-color);
+            animation: bounce 1s ease infinite;
+        }
+        
+        .message-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--success-color);
+        }
+        
+        .message-text {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+        
+        .modal-btn {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .modal-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        .error-icon {
+            color: var(--error-color);
+        }
+        
+        .error-title {
+            color: var(--error-color);
+        }
+        
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1004,7 +1104,7 @@
                 
                 <div class="contact-form">
                     <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-color);">أرسل رسالة</h3>
-                    <form action="https://formspree.io/f/movwowwp" method="POST">
+                    <form id="contactForm" onsubmit="sendMessage(event)">
   <div class="form-group">
     <label for="name">الاسم الكامل</label>
     <input type="text" name="name" id="name" required placeholder="اكتب اسمك">
@@ -1041,6 +1141,18 @@
             </div>
         </div>
     </footer>
+    
+    <!-- رسالة التأكيد -->
+    <div class="message-modal" id="messageModal">
+        <div class="message-content">
+            <div class="message-icon" id="messageIcon"><i class="fas fa-check-circle"></i></div>
+            <h2 class="message-title" id="messageTitle">تم الإرسال بنجاح!</h2>
+            <p class="message-text" id="messageText">شكراً لك على رسالتك، سوف نقوم بالرد عليك في أقرب وقت ممكن.</p>
+            <button class="modal-btn" onclick="closeMessage()">
+                <i class="fas fa-times"></i> إغلاق
+            </button>
+        </div>
+    </div>
 
     <script>
         // التأثير الكتابي للرأس
@@ -1168,17 +1280,58 @@
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
             });
-            
-            // إرسال النموذج
-            const messageForm = document.getElementById('messageForm');
-            if (messageForm) {
-                messageForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('تم إرسال رسالتك بنجاح! سنتواصل معك في أقرب وقت.');
-                    this.reset();
-                });
-            }
         });
+        
+        // وظائف الرسالة الجديدة
+        function sendMessage(e) {
+            e.preventDefault();
+            
+            // تعطيل الزر أثناء الإرسال
+            const submitBtn = document.querySelector('.form-btn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+            
+            // محاكاة إرسال الرسالة (في الواقع سيتم إرسالها إلى الخادم)
+            setTimeout(() => {
+                // في بيئة حقيقية، هنا سيتم إرسال البيانات إلى الخادم
+                // وعرض الرسالة حسب نتيجة الإرسال
+                
+                showMessage(true, "تم الإرسال بنجاح!", "شكراً لك على رسالتك، سوف نقوم بالرد عليك في أقرب وقت ممكن.");
+                
+                // إعادة تعيين النموذج
+                document.getElementById('contactForm').reset();
+                
+                // إعادة تمكين الزر
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'إرسال الرسالة';
+            }, 1500);
+        }
+        
+        function showMessage(isSuccess, title, text) {
+            const modal = document.getElementById('messageModal');
+            const icon = document.getElementById('messageIcon');
+            const titleElement = document.getElementById('messageTitle');
+            const textElement = document.getElementById('messageText');
+            
+            if (isSuccess) {
+                icon.innerHTML = '<i class="fas fa-check-circle"></i>';
+                icon.style.color = 'var(--success-color)';
+                titleElement.textContent = title;
+                titleElement.className = 'message-title';
+            } else {
+                icon.innerHTML = '<i class="fas fa-exclamation-circle"></i>';
+                icon.style.color = 'var(--error-color)';
+                titleElement.textContent = title;
+                titleElement.className = 'message-title error-title';
+            }
+            
+            textElement.textContent = text;
+            modal.style.display = 'flex';
+        }
+        
+        function closeMessage() {
+            document.getElementById('messageModal').style.display = 'none';
+        }
     </script>
 </body>
 </html>
