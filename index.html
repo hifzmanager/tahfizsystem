@@ -519,7 +519,7 @@
             color: var(--text-light);
         }
         
-        /* تصميم قسم الصور */
+        /* تصميم قسم الصور - مع تعديلات Lightbox */
         .gallery {
             margin: 30px auto;
             text-align: center;
@@ -544,6 +544,7 @@
             border-radius: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
         }
 
         .gallery-grid img:hover {
@@ -569,6 +570,111 @@
             text-align: center; /* لجعل النص في الوسط */
             font-size: 24px; /* حجم الخط */
             margin-bottom: 20px; /* مسافة أسفل العنوان */
+        }
+        
+        /* تصميم Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox-caption {
+            color: white;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            text-align: center;
+            max-width: 80%;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+        
+        .lightbox-close:hover {
+            transform: scale(1.1);
+            color: var(--primary-color);
+        }
+        
+        .lightbox-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            z-index: 10;
+        }
+        
+        .lightbox-btn:hover {
+            background: rgba(93, 173, 226, 0.8);
+        }
+        
+        .lightbox-prev {
+            left: 20px;
+        }
+        
+        .lightbox-next {
+            right: 20px;
+        }
+        
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 20px;
         }
         
         /* تصميم قسم التواصل */
@@ -935,6 +1041,17 @@
             .graph-container {
                 flex-direction: column;
             }
+            
+            /* تعديلات متجاوبة لـ Lightbox */
+            .lightbox-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .lightbox-caption {
+                font-size: 1rem;
+            }
         }
         
         @media (max-width: 576px) {
@@ -968,6 +1085,34 @@
             
             .social-text {
                 font-size: 0.75rem;
+            }
+            
+            /* تعديلات متجاوبة لـ Lightbox */
+            .lightbox-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                top: auto;
+                bottom: 10px;
+            }
+            
+            .lightbox-prev {
+                left: 10px;
+            }
+            
+            .lightbox-next {
+                right: 10px;
+            }
+            
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                font-size: 2rem;
+            }
+            
+            .lightbox-counter {
+                bottom: 10px;
+                font-size: 1rem;
             }
         }
         
@@ -1243,7 +1388,7 @@
                         <i class="fas fa-calendar-alt"></i>
                     </div>
                     <h3>آخر تحديث</h3>
-                    <div class="value">11 يوليو 2025</div>
+                    <div class="value">24 يناير 2025</div>
                     <div class="sub-value">أحدث إصدار متوفر</div>
                 </div>
                 
@@ -1341,19 +1486,35 @@
         </div>
     </section>
 
-    <!-- معرض الصور -->
+    <!-- معرض الصور مع إضافة Lightbox -->
     <section class="gallery" id="gallery">
         <div class="container">
             <h2 class="section-title">صور من التطبيق</h2>
             <div class="gallery-grid">
                 <!-- الصور -->
-                <img src="https://www2.0zz0.com/2024/12/26/08/875661458.jpg" alt="صورة 1">
-                <img src="https://www2.0zz0.com/2024/12/26/08/560766280.jpg" alt="صورة 2">
-                <img src="https://www2.0zz0.com/2024/12/26/10/587672596.jpg" alt="صورة 3">
-                <img src="https://www2.0zz0.com/2024/12/26/10/309818401.jpg" alt="صورة 4">
+                <img src="https://www2.0zz0.com/2024/12/26/08/875661458.jpg" alt="واجهة التطبيق الرئيسية">
+                <img src="https://www2.0zz0.com/2024/12/26/08/560766280.jpg" alt="قائمة إدارة الحلقات">
+                <img src="https://www2.0zz0.com/2024/12/26/10/587672596.jpg" alt="تتبع تقدم الطلاب">
+                <img src="https://www2.0zz0.com/2024/12/26/10/309818401.jpg" alt="تقارير الأداء">
             </div>
         </div>
     </section>
+
+    <!-- Lightbox Structure -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <button class="lightbox-btn lightbox-prev" id="lightboxPrev">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <button class="lightbox-btn lightbox-next" id="lightboxNext">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-img" id="lightboxImg">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
 
     <!-- قسم التواصل -->
     <section id="contact" class="contact-section">
@@ -1570,6 +1731,9 @@
                     bar.style.width = percent + '%';
                 }, 500);
             });
+            
+            // تهيئة Lightbox
+            initLightbox();
         });
         
         // وظائف الرسالة الجديدة
@@ -1621,6 +1785,89 @@
         
         function closeMessage() {
             document.getElementById('messageModal').style.display = 'none';
+        }
+        
+        // وظائف Lightbox
+        function initLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const lightboxCounter = document.getElementById('lightboxCounter');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const lightboxPrev = document.getElementById('lightboxPrev');
+            const lightboxNext = document.getElementById('lightboxNext');
+            
+            const galleryImages = document.querySelectorAll('.gallery-grid img');
+            let currentIndex = 0;
+            
+            // فتح Lightbox عند النقر على صورة
+            galleryImages.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    currentIndex = index;
+                    openLightbox();
+                });
+            });
+            
+            // فتح Lightbox
+            function openLightbox() {
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                updateLightbox();
+            }
+            
+            // إغلاق Lightbox
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // تحديث محتوى Lightbox
+            function updateLightbox() {
+                const currentImg = galleryImages[currentIndex];
+                lightboxImg.src = currentImg.src;
+                lightboxCaption.textContent = currentImg.alt || 'صورة من التطبيق';
+                lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+            }
+            
+            // التنقل بين الصور
+            function navigate(direction) {
+                currentIndex += direction;
+                
+                if (currentIndex >= galleryImages.length) {
+                    currentIndex = 0;
+                } else if (currentIndex < 0) {
+                    currentIndex = galleryImages.length - 1;
+                }
+                
+                updateLightbox();
+            }
+            
+            // التنقل باستخدام الأسهم
+            lightboxPrev.addEventListener('click', () => navigate(-1));
+            lightboxNext.addEventListener('click', () => navigate(1));
+            
+            // إغلاق Lightbox
+            lightboxClose.addEventListener('click', closeLightbox);
+            
+            // إغلاق عند النقر خارج الصورة
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            
+            // التنقل باستخدام لوحة المفاتيح
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    navigate(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigate(1);
+                }
+            });
         }
     </script>
 </body>
