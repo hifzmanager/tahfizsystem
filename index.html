@@ -324,6 +324,173 @@
             margin-bottom: 20px;
         }
         
+        /* إضافة معلومات التطبيق */
+        .app-info-section {
+            padding: 100px 20px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .app-info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .app-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .app-info-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+        }
+        
+        .app-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(93, 173, 226, 0.5);
+        }
+        
+        .app-info-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(93, 173, 226, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .app-info-card:hover .app-info-icon {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .app-info-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        
+        .app-info-card .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 10px;
+        }
+        
+        .app-info-card .sub-value {
+            font-size: 0.9rem;
+            color: #d3d3d3;
+            margin-top: 5px;
+        }
+        
+        /* رسم بياني تفاعلي */
+        .info-graph {
+            margin-top: 60px;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .graph-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .graph-item {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+        
+        .graph-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .graph-bar {
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .bar-fill {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 10px;
+            position: relative;
+            transition: width 1.5s ease-in-out;
+            width: 0; /* سيتم تعديله بالجافاسكريبت */
+        }
+        
+        .bar-percentage {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            line-height: 20px;
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* رسم دائري */
+        .pie-chart {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--primary-color) 0% 65%,
+                rgba(255, 255, 255, 0.1) 65% 100%
+            );
+            margin: 0 auto 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pie-center {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
         /* تصميم قسم الإصدارات القديمة */
         .version-grid {
             display: grid;
@@ -354,56 +521,55 @@
         
         /* تصميم قسم الصور */
         .gallery {
-    margin: 30px auto;
-    text-align: center;
-}
+            margin: 30px auto;
+            text-align: center;
+        }
 
-.gallery h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #5DADE2;
-}
+        .gallery h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #5DADE2;
+        }
 
-.gallery-grid {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    padding: 20px;
-}
+        .gallery-grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            padding: 20px;
+        }
 
-.gallery-grid img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+        .gallery-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-.gallery-grid img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
 
-.white-line::after {
-    background: #ffffff;
-}
-
+        .white-line::after {
+            background: #ffffff;
+        }
         
         /* إعداد الحاوية لتكون خلفية ثابتة */
-.circles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-}
+        .circles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
 
-.gallery h2 {
-    color: white; /* لتغيير اللون إلى الأبيض */
-    text-align: center; /* لجعل النص في الوسط */
-    font-size: 24px; /* حجم الخط */
-    margin-bottom: 20px; /* مسافة أسفل العنوان */
-}
+        .gallery h2 {
+            color: white; /* لتغيير اللون إلى الأبيض */
+            text-align: center; /* لجعل النص في الوسط */
+            font-size: 24px; /* حجم الخط */
+            margin-bottom: 20px; /* مسافة أسفل العنوان */
+        }
         
         /* تصميم قسم التواصل */
         .contact-section {
@@ -701,6 +867,10 @@
             .section-title {
                 font-size: 2.2rem;
             }
+            
+            .app-info-card {
+                min-height: 220px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -760,6 +930,10 @@
             
             .social-text {
                 font-size: 0.8rem;
+            }
+            
+            .graph-container {
+                flex-direction: column;
             }
         }
         
@@ -898,7 +1072,7 @@
 </head>
 <body>
 
-    <!-- شريط التنعل الثابت -->
+    <!-- شريط التنقل الثابت -->
     <nav class="navbar" id="navbar">
         <div class="logo">
             <img src="https://www2.0zz0.com/2025/02/01/17/252796576.png" alt="شعار إدارة حلقات التحفيظ">
@@ -908,6 +1082,7 @@
         <div class="nav-links">
             <a href="#features" class="active"><i class="fas fa-star"></i> المميزات</a>
             <a href="#download"><i class="fas fa-download"></i> التحميل</a>
+            <a href="#app-info"><i class="fas fa-info-circle"></i> معلومات التطبيق</a>
             <a href="#gallery"><i class="fas fa-images"></i> صور من التطبيق</a>
             <a href="#contact"><i class="fas fa-envelope"></i> تواصل معنا</a>
         </div>
@@ -1029,6 +1204,108 @@
                     <a href="https://www.mediafire.com/file/b7q5w1rm72tsxlp/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_4.apk/file" class="btn">تحميل الآن</a>
                 </div>
             </div>
+            
+            <!-- رابط لمعلومات التطبيق -->
+            <div style="margin-top: 40px;">
+                <a href="#app-info" class="btn btn-outline">
+                    <i class="fas fa-info-circle"></i> معلومات التطبيق
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم معلومات التطبيق -->
+    <section class="app-info-section" id="app-info">
+        <div class="app-info-container">
+            <h2 class="section-title">معلومات التطبيق</h2>
+            
+            <div class="app-info-grid">
+                <div class="app-info-card">
+                    <div class="app-info-icon">
+                        <i class="fas fa-weight-hanging"></i>
+                    </div>
+                    <h3>حجم التطبيق</h3>
+                    <div class="value">15.8 ميجابايت</div>
+                    <div class="sub-value">حجم صغير لا يشغل مساحة كبيرة</div>
+                </div>
+                
+                <div class="app-info-card">
+                    <div class="app-info-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>الناشر</h3>
+                    <div class="value">عبدالرحمن طارق الفلق</div>
+                    <div class="sub-value">مطور تطبيقات أندرويد</div>
+                </div>
+                
+                <div class="app-info-card">
+                    <div class="app-info-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>آخر تحديث</h3>
+                    <div class="value">11 يوليو 2025</div>
+                    <div class="sub-value">أحدث إصدار متوفر</div>
+                </div>
+                
+                <div class="app-info-card">
+                    <div class="app-info-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>نظام التشغيل</h3>
+                    <div class="value">أندرويد 8+</div>
+                    <div class="sub-value">متوافق مع معظم الأجهزة</div>
+                </div>
+                
+                <div class="app-info-card">
+                    <div class="app-info-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>الإصدار</h3>
+                    <div class="value">4.0.1</div>
+                    <div class="sub-value">الإصدار الرابع</div>
+                </div>
+                
+                <div class="app-info-card">
+                    <div class="app-info-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>التقييم</h3>
+                    <div class="value">4.9/5</div>
+                    <div class="sub-value">من 850 تقييم</div>
+                </div>
+            </div>
+            
+            <div class="info-graph">
+                <div class="graph-container">
+                    <div class="graph-item">
+                        <div class="graph-title">معدل التحميلات الشهري</div>
+                        <div class="graph-bar">
+                            <div class="bar-fill" data-percent="85">
+                                <span class="bar-percentage">85%</span>
+                            </div>
+                        </div>
+                        <p>+1,250 تحميل شهرياً</p>
+                    </div>
+                    
+                    <div class="graph-item">
+                        <div class="graph-title">رضا المستخدمين</div>
+                        <div class="pie-chart">
+                            <div class="pie-center">94%</div>
+                        </div>
+                        <p>تقييم إيجابي من المستخدمين</p>
+                    </div>
+                    
+                    <div class="graph-item">
+                        <div class="graph-title">نسبة الاستخدام</div>
+                        <div class="graph-bar">
+                            <div class="bar-fill" data-percent="92">
+                                <span class="bar-percentage">92%</span>
+                            </div>
+                        </div>
+                        <p>نسبة المستخدمين النشطين يومياً</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1065,14 +1342,16 @@
     </section>
 
     <!-- معرض الصور -->
-    <section class="gallery">
-    <h2 class="section-title white-line">صور من التطبيق</h2>
-    <div class="gallery-grid">
-        <!-- الصور -->
-            <img src="https://www2.0zz0.com/2024/12/26/08/875661458.jpg" alt="صورة 1">
-            <img src="https://www2.0zz0.com/2024/12/26/08/560766280.jpg" alt="صورة 2">
-            <img src="https://www2.0zz0.com/2024/12/26/10/587672596.jpg" alt="صورة 3">
-            <img src="https://www2.0zz0.com/2024/12/26/10/309818401.jpg" alt="صورة 4">
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">صور من التطبيق</h2>
+            <div class="gallery-grid">
+                <!-- الصور -->
+                <img src="https://www2.0zz0.com/2024/12/26/08/875661458.jpg" alt="صورة 1">
+                <img src="https://www2.0zz0.com/2024/12/26/08/560766280.jpg" alt="صورة 2">
+                <img src="https://www2.0zz0.com/2024/12/26/10/587672596.jpg" alt="صورة 3">
+                <img src="https://www2.0zz0.com/2024/12/26/10/309818401.jpg" alt="صورة 4">
+            </div>
         </div>
     </section>
 
@@ -1105,23 +1384,23 @@
                 <div class="contact-form">
                     <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-color);">أرسل رسالة</h3>
                     <form id="contactForm" onsubmit="sendMessage(event)">
-  <div class="form-group">
-    <label for="name">الاسم الكامل</label>
-    <input type="text" name="name" id="name" required placeholder="اكتب اسمك">
-  </div>
+                        <div class="form-group">
+                            <label for="name">الاسم الكامل</label>
+                            <input type="text" name="name" id="name" required placeholder="اكتب اسمك">
+                        </div>
 
-  <div class="form-group">
-    <label for="email">البريد الإلكتروني</label>
-    <input type="email" name="email" id="email" required placeholder="اكتب بريدك">
-  </div>
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" name="email" id="email" required placeholder="اكتب بريدك">
+                        </div>
 
-  <div class="form-group">
-    <label for="message">الرسالة</label>
-    <textarea name="message" id="message" required placeholder="اكتب رسالتك هنا"></textarea>
-  </div>
+                        <div class="form-group">
+                            <label for="message">الرسالة</label>
+                            <textarea name="message" id="message" required placeholder="اكتب رسالتك هنا"></textarea>
+                        </div>
 
-  <button type="submit" class="form-btn">إرسال الرسالة</button>
-</form>
+                        <button type="submit" class="form-btn">إرسال الرسالة</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1274,11 +1553,22 @@
                 });
             }, { threshold: 0.1 });
             
-            document.querySelectorAll('.feature-card, .download-card, .version-card, .gallery-item').forEach(card => {
+            document.querySelectorAll('.feature-card, .download-card, .version-card, .app-info-card').forEach(card => {
                 card.style.opacity = 0;
                 card.style.transform = 'translateY(30px)';
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
+            });
+            
+            // تحريك أشرطة الرسم البياني
+            const bars = document.querySelectorAll('.bar-fill');
+            bars.forEach(bar => {
+                const percent = bar.getAttribute('data-percent');
+                bar.style.width = '0';
+                
+                setTimeout(() => {
+                    bar.style.width = percent + '%';
+                }, 500);
             });
         });
         
