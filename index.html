@@ -1181,6 +1181,109 @@
             }
         }
         
+        /* تصميم مشغل الفيديو الجديد */
+        .video-player-container {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            background: #000;
+            display: none; /* سيتم إظهاره عند الطلب */
+        }
+        
+        .video-player {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* نسبة 16:9 */
+            position: relative;
+        }
+        
+        .video-player iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.4s ease;
+            z-index: 2;
+        }
+        
+        .video-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .video-title {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+        
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.1);
+            background: var(--primary-dark);
+        }
+        
+        .play-btn i {
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .video-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 3;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .video-close-btn:hover {
+            transform: rotate(90deg);
+            background: var(--accent-color);
+        }
+        
         /* تصميم متجاوب */
         @media (max-width: 992px) {
             header h1 {
@@ -1197,6 +1300,10 @@
             
             .app-info-card {
                 min-height: 220px;
+            }
+            
+            .video-title {
+                font-size: 1.8rem;
             }
         }
         
@@ -1273,6 +1380,11 @@
             .lightbox-caption {
                 font-size: 1rem;
             }
+            
+            .play-btn {
+                width: 70px;
+                height: 70px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1339,6 +1451,11 @@
             .toggle-btn {
                 padding: 10px 25px;
                 font-size: 1rem;
+            }
+            
+            .video-title {
+                font-size: 1.5rem;
+                padding: 0 15px;
             }
         }
     </style>
@@ -1460,9 +1577,26 @@
                 حمّل أحدث إصدار من التطبيق واستمتع بجميع الميزات المحسّنة والتحديثات الجديدة
             </p>
             
-            <a href="https://youtu.be/ucYwvFyW97M?si=An7FXYN9gtSpG-ex" target="_blank" class="btn" style="margin-bottom: 30px;">
+            <!-- زر مشاهدة الفيديو التعريفي -->
+            <a href="#" id="videoTrigger" class="btn" style="margin-bottom: 30px;">
                 <i class="fas fa-play-circle"></i> مشاهدة الفيديو التعريفي
             </a>
+            
+            <!-- مشغل الفيديو المدمج -->
+            <div class="video-player-container" id="videoPlayer">
+                <div class="video-player">
+                    <iframe id="videoFrame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-overlay" id="videoOverlay">
+                    <h3 class="video-title">فيديو تعريفي عن تطبيق إدارة حلقات التحفيظ</h3>
+                    <div class="play-btn" id="playBtn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-close-btn" id="videoCloseBtn">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
             
             <div class="download-options">
                 <div class="download-card">
@@ -2089,33 +2223,65 @@
             }, 3000);
         }
         
-</script>
-
-<!-- كود إشعارات OneSignal -->
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "aa7ffaa6-dd1f-4d06-be69-699ca76fa88d", // هذا هو App ID الخاص بك
-    });
-  });
-</script>
-
-<!-- كود ربط زر التفعيل بنافذة الموافقة -->
-<script>
-  document.getElementById("notificationToggle").addEventListener("click", function () {
-    OneSignalDeferred.push(async function(OneSignal) {
-      const isPushEnabled = await OneSignal.isPushNotificationsEnabled();
-      
-      if (!isPushEnabled) {
-        await OneSignal.showSlidedownPrompt(); // يفتح نافذة طلب الإذن
-      } else {
-        alert("الإشعارات مفعّلة لديك ✅");
-      }
-    });
-  });
-</script>
-
+        // وظائف مشغل الفيديو الجديد
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoTrigger = document.getElementById('videoTrigger');
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoOverlay = document.getElementById('videoOverlay');
+            const playBtn = document.getElementById('playBtn');
+            const videoFrame = document.getElementById('videoFrame');
+            const videoCloseBtn = document.getElementById('videoCloseBtn');
+            
+            // رابط الفيديو
+            const videoUrl = 'https://www.youtube.com/embed/ucYwvFyW97M?si=An7FXYN9gtSpG-ex';
+            
+            // عند النقر على زر مشاهدة الفيديو
+            videoTrigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // إظهار مشغل الفيديو
+                videoPlayer.style.display = 'block';
+                
+                // تمرير المستخدم إلى قسم التحميل
+                const downloadSection = document.getElementById('download');
+                window.scrollTo({
+                    top: downloadSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // عند النقر على زر التشغيل
+            playBtn.addEventListener('click', function() {
+                // إخفاء الـ overlay
+                videoOverlay.classList.add('hidden');
+                
+                // تحميل الفيديو
+                videoFrame.src = videoUrl + '&autoplay=1';
+            });
+            
+            // عند النقر على زر الإغلاق
+            videoCloseBtn.addEventListener('click', function() {
+                // إخفاء مشغل الفيديو
+                videoPlayer.style.display = 'none';
+                
+                // إظهار الـ overlay مرة أخرى
+                videoOverlay.classList.remove('hidden');
+                
+                // إيقاف الفيديو
+                videoFrame.src = '';
+            });
+        });
+    </script>
+    
+    <!-- كود إشعارات OneSignal -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(async function(OneSignal) {
+            await OneSignal.init({
+                appId: "aa7ffaa6-dd1f-4d06-be69-699ca76fa88d", // هذا هو App ID الخاص بك
+            });
+        });
+    </script>
 </body>
 </html>
