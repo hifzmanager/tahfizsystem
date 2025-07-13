@@ -8,7 +8,149 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* إعدادات عامة */
+        /* إضافة قسم قنوات التواصل */
+        .channels-section {
+            background: linear-gradient(135deg, rgba(39, 71, 120, 0.7), rgba(27, 59, 89, 0.7));
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .channels-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .channel-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .channel-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .channel-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            transition: all 0.4s ease;
+        }
+        
+        .channel-card:hover .channel-icon {
+            transform: scale(1.1);
+        }
+        
+        .whatsapp .channel-icon {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .telegram .channel-icon {
+            background: linear-gradient(135deg, #0088cc, #2AABEE);
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
+        }
+        
+        .youtube .channel-icon {
+            background: linear-gradient(135deg, #FF0000, #CD201F);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+        
+        .channel-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .channel-card p {
+            color: #d3d3d3;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .channel-btn {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        
+        .whatsapp .channel-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .telegram .channel-btn {
+            background: linear-gradient(135deg, #0088cc, #2AABEE);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
+        }
+        
+        .youtube .channel-btn {
+            background: linear-gradient(135deg, #FF0000, #CD201F);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+        
+        .channel-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .channel-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .whatsapp .channel-decoration {
+            background: radial-gradient(circle, #25D366 0%, transparent 70%);
+        }
+        
+        .telegram .channel-decoration {
+            background: radial-gradient(circle, #0088cc 0%, transparent 70%);
+        }
+        
+        .youtube .channel-decoration {
+            background: radial-gradient(circle, #FF0000 0%, transparent 70%);
+        }
+        
+        /* أنماط باقي الموقع تبقى كما هي */
         :root {
             --primary-color: #5DADE2;
             --primary-dark: #1a60a7;
@@ -1474,6 +1616,7 @@
             <a href="#download"><i class="fas fa-download"></i> التحميل</a>
             <a href="#app-info"><i class="fas fa-info-circle"></i> معلومات التطبيق</a>
             <a href="#gallery"><i class="fas fa-images"></i> صور من التطبيق</a>
+            <a href="#channels"><i class="fas fa-share-alt"></i> قنوات التواصل</a>
             <a href="#contact"><i class="fas fa-envelope"></i> تواصل معنا</a>
         </div>
         
@@ -1779,6 +1922,54 @@
         </div>
     </section>
 
+    <!-- قسم قنوات التواصل الجديد -->
+    <section id="channels" class="channels-section">
+        <div class="channels-container">
+            <h2 class="section-title">قنوات التواصل</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem;">
+                انضم إلى قنواتنا على منصات التواصل الاجتماعي لتبقى على اطلاع دائم بآخر التحديثات والأخبار حول التطبيق
+            </p>
+            
+            <div class="channels-grid">
+                <div class="channel-card whatsapp">
+                    <div class="channel-decoration"></div>
+                    <div class="channel-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>قناة الواتساب</h3>
+                    <p>انضم إلى قناتنا على الواتساب لتلقي إشعارات فورية بالتحديثات الجديدة، الحلقات التعليمية، والنصائح المفيدة لإدارة حلقات التحفيظ.</p>
+                    <a href="https://whatsapp.com/channel/0029VasxlRQ4Crfb1WwfXS1u" target="_blank" class="channel-btn">
+                        <i class="fab fa-whatsapp"></i> انضم الآن
+                    </a>
+                </div>
+                
+                <div class="channel-card telegram">
+                    <div class="channel-decoration"></div>
+                    <div class="channel-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>قناة التلجرام</h3>
+                    <p>اشترك في قناتنا على التلجرام لتحصل على آخر التحديثات، الإعلانات المهمة، والمحتوى التعليمي المتعلق بتطبيق إدارة حلقات التحفيظ.</p>
+                    <a href="https://t.me/TahfeezManager" target="_blank" class="channel-btn">
+                        <i class="fab fa-telegram"></i> انضم الآن
+                    </a>
+                </div>
+                
+                <div class="channel-card youtube">
+                    <div class="channel-decoration"></div>
+                    <div class="channel-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>قناة اليوتيوب</h3>
+                    <p>اشترك في قناتنا على اليوتيوب لمشاهدة الفيديوهات التعليمية، الشروحات المفصلة، والتحديثات الجديدة للتطبيق بشكل مرئي ومبسط.</p>
+                    <a href="https://youtube.com/@edara_qr?si=ADqDRwSIvsleZTZd" target="_blank" class="channel-btn">
+                        <i class="fab fa-youtube"></i> انضم الآن
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Lightbox Structure -->
     <div class="lightbox" id="lightbox">
         <span class="lightbox-close" id="lightboxClose">&times;</span>
@@ -1993,7 +2184,7 @@
                 });
             }, { threshold: 0.1 });
             
-            document.querySelectorAll('.feature-card, .download-card, .version-card, .app-info-card').forEach(card => {
+            document.querySelectorAll('.feature-card, .download-card, .version-card, .app-info-card, .channel-card').forEach(card => {
                 card.style.opacity = 0;
                 card.style.transform = 'translateY(30px)';
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
