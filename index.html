@@ -8,148 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* إضافة قسم قنوات التواصل */
-        .channels-section {
-            background: linear-gradient(135deg, rgba(39, 71, 120, 0.7), rgba(27, 59, 89, 0.7));
-            padding: 100px 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .channels-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .channels-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .channel-card {
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .channel-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-        
-        .channel-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            transition: all 0.4s ease;
-        }
-        
-        .channel-card:hover .channel-icon {
-            transform: scale(1.1);
-        }
-        
-        .whatsapp .channel-icon {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-        }
-        
-        .telegram .channel-icon {
-            background: linear-gradient(135deg, #0088cc, #2AABEE);
-            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
-        }
-        
-        .youtube .channel-icon {
-            background: linear-gradient(135deg, #FF0000, #CD201F);
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
-        }
-        
-        .channel-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: white;
-        }
-        
-        .channel-card p {
-            color: #d3d3d3;
-            margin-bottom: 25px;
-            line-height: 1.7;
-        }
-        
-        .channel-btn {
-            padding: 12px 35px;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            margin-top: 15px;
-        }
-        
-        .whatsapp .channel-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-        }
-        
-        .telegram .channel-btn {
-            background: linear-gradient(135deg, #0088cc, #2AABEE);
-            color: white;
-            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
-        }
-        
-        .youtube .channel-btn {
-            background: linear-gradient(135deg, #FF0000, #CD201F);
-            color: white;
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
-        }
-        
-        .channel-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-        
-        .channel-decoration {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            opacity: 0.1;
-        }
-        
-        .whatsapp .channel-decoration {
-            background: radial-gradient(circle, #25D366 0%, transparent 70%);
-        }
-        
-        .telegram .channel-decoration {
-            background: radial-gradient(circle, #0088cc 0%, transparent 70%);
-        }
-        
-        .youtube .channel-decoration {
-            background: radial-gradient(circle, #FF0000 0%, transparent 70%);
-        }
-        
         /* أنماط باقي الموقع تبقى كما هي */
         :root {
             --primary-color: #5DADE2;
@@ -780,57 +638,252 @@
             color: var(--text-light);
         }
         
-        /* تصميم قسم الصور - مع تعديلات Lightbox */
-        .gallery {
-            margin: 30px auto;
-            text-align: center;
-        }
-
-        .gallery h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #5DADE2;
-        }
-
-        .gallery-grid {
-            display: grid;
-            gap: 20px;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            padding: 20px;
-        }
-
-        .gallery-grid img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-        }
-
-        .gallery-grid img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        .white-line::after {
-            background: #ffffff;
+        /* تصميم قسم الصور الجديد - معرض الهواتف المتحرك */
+        .gallery-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, rgba(39, 71, 120, 0.7), rgba(27, 59, 89, 0.7));
+            position: relative;
+            overflow: hidden;
         }
         
-        /* إعداد الحاوية لتكون خلفية ثابتة */
-        .circles {
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .phones-container {
+            position: relative;
+            height: 600px;
+            margin: 60px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px;
+        }
+        
+        .phone {
+            position: absolute;
+            width: 280px;
+            height: 560px;
+            background: #f0f0f0;
+            border-radius: 40px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.1),
+                inset 0 0 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .phone-screen {
+            width: 92%;
+            height: 96%;
+            border-radius: 30px;
+            overflow: hidden;
+            background: #fff;
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .phone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* الهاتف المركزي - الأكبر */
+        .phone-center {
+            width: 300px;
+            height: 600px;
+            z-index: 10;
+            transform: translateX(0) rotateY(0deg) scale(1.1);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.1),
+                inset 0 0 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* الهاتف الأيسر الأول */
+        .phone-left-1 {
+            transform: translateX(-280px) rotateY(-15deg) scale(0.9);
+            z-index: 5;
+            filter: brightness(0.8);
+        }
+        
+        /* الهاتف الأيسر الثاني */
+        .phone-left-2 {
+            transform: translateX(-140px) rotateY(-8deg) scale(1);
+            z-index: 7;
+            filter: brightness(0.9);
+        }
+        
+        /* الهاتف الأيمن الأول */
+        .phone-right-1 {
+            transform: translateX(140px) rotateY(8deg) scale(1);
+            z-index: 7;
+            filter: brightness(0.9);
+        }
+        
+        /* الهاتف الأيمن الثاني */
+        .phone-right-2 {
+            transform: translateX(280px) rotateY(15deg) scale(0.9);
+            z-index: 5;
+            filter: brightness(0.8);
+        }
+        
+        /* الهاتف المخفي على اليسار */
+        .phone-hidden-left {
+            transform: translateX(-420px) rotateY(-25deg) scale(0.8);
+            z-index: 3;
+            filter: brightness(0.6);
+            opacity: 0.7;
+        }
+        
+        /* الهاتف المخفي على اليمين */
+        .phone-hidden-right {
+            transform: translateX(420px) rotateY(25deg) scale(0.8);
+            z-index: 3;
+            filter: brightness(0.6);
+            opacity: 0.7;
+        }
+        
+        .gallery-caption {
+            margin-top: 50px;
+            font-size: 1.5rem;
+            color: white;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        
+        .gallery-caption.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* عناصر التحكم */
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .control-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .control-btn:hover {
+            background: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        /* نقاط التبديل */
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+        
+        /* زخارف خلفية */
+        .gallery-decoration {
             position: absolute;
             width: 100%;
             height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
             overflow: hidden;
-            z-index: -1;
+            opacity: 0.1;
         }
-
-        .gallery h2 {
-            color: white; /* لتغيير اللون إلى الأبيض */
-            text-align: center; /* لجعل النص في الوسط */
-            font-size: 24px; /* حجم الخط */
-            margin-bottom: 20px; /* مسافة أسفل العنوان */
+        
+        .decoration-item {
+            position: absolute;
+            opacity: 0.3;
+        }
+        
+        .leaf-1 {
+            top: 10%;
+            left: 10%;
+            font-size: 4rem;
+            color: var(--primary-color);
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .leaf-2 {
+            top: 70%;
+            right: 5%;
+            font-size: 3rem;
+            color: var(--primary-color);
+            animation: float 12s infinite ease-in-out 2s;
+        }
+        
+        .leaf-3 {
+            bottom: 20%;
+            left: 15%;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            animation: float 18s infinite ease-in-out 1s;
+        }
+        
+        .leaf-4 {
+            top: 30%;
+            right: 15%;
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            animation: float 14s infinite ease-in-out 3s;
+        }
+        
+        .circle-1 {
+            top: 20%;
+            right: 20%;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .circle-2 {
+            bottom: 30%;
+            left: 20%;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            animation: float 16s infinite ease-in-out 4s;
         }
         
         /* تصميم Lightbox */
@@ -936,6 +989,148 @@
             background: rgba(0, 0, 0, 0.5);
             padding: 5px 15px;
             border-radius: 20px;
+        }
+        
+        /* قسم قنوات التواصل */
+        .channels-section {
+            background: linear-gradient(135deg, rgba(39, 71, 120, 0.7), rgba(27, 59, 89, 0.7));
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .channels-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .channel-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .channel-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .channel-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            transition: all 0.4s ease;
+        }
+        
+        .channel-card:hover .channel-icon {
+            transform: scale(1.1);
+        }
+        
+        .whatsapp .channel-icon {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .telegram .channel-icon {
+            background: linear-gradient(135deg, #0088cc, #2AABEE);
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
+        }
+        
+        .youtube .channel-icon {
+            background: linear-gradient(135deg, #FF0000, #CD201F);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+        
+        .channel-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .channel-card p {
+            color: #d3d3d3;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .channel-btn {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        
+        .whatsapp .channel-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .telegram .channel-btn {
+            background: linear-gradient(135deg, #0088cc, #2AABEE);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
+        }
+        
+        .youtube .channel-btn {
+            background: linear-gradient(135deg, #FF0000, #CD201F);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+        
+        .channel-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .channel-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .whatsapp .channel-decoration {
+            background: radial-gradient(circle, #25D366 0%, transparent 70%);
+        }
+        
+        .telegram .channel-decoration {
+            background: radial-gradient(circle, #0088cc 0%, transparent 70%);
+        }
+        
+        .youtube .channel-decoration {
+            background: radial-gradient(circle, #FF0000 0%, transparent 70%);
         }
         
         /* تصميم قسم التواصل */
@@ -1426,6 +1621,13 @@
             background: var(--accent-color);
         }
         
+        /* إخفاء عناصر التحكم والنقاط في معرض الصور */
+.gallery-controls,
+.gallery-dots {
+    display: none !important;
+}
+
+
         /* تصميم متجاوب */
         @media (max-width: 992px) {
             header h1 {
@@ -1446,6 +1648,36 @@
             
             .video-title {
                 font-size: 1.8rem;
+            }
+            
+            .phone {
+                width: 240px;
+                height: 480px;
+            }
+            
+            .phone-center {
+                width: 260px;
+                height: 520px;
+            }
+            
+            .phone-left-1, .phone-hidden-left {
+                transform: translateX(-220px) rotateY(-15deg) scale(0.9);
+            }
+            
+            .phone-left-2 {
+                transform: translateX(-110px) rotateY(-8deg) scale(1);
+            }
+            
+            .phone-right-1 {
+                transform: translateX(110px) rotateY(8deg) scale(1);
+            }
+            
+            .phone-right-2, .phone-hidden-right {
+                transform: translateX(220px) rotateY(15deg) scale(0.9);
+            }
+            
+            .phones-container {
+                height: 500px;
             }
         }
         
@@ -1527,6 +1759,43 @@
                 width: 70px;
                 height: 70px;
             }
+            
+            /* تعديلات متجاوبة لمعرض الهواتف */
+            .phones-container {
+                height: 400px;
+                margin: 40px auto;
+            }
+            
+            .phone {
+                width: 180px;
+                height: 360px;
+            }
+            
+            .phone-center {
+                width: 200px;
+                height: 400px;
+            }
+            
+            .phone-left-1, .phone-hidden-left {
+                transform: translateX(-160px) rotateY(-15deg) scale(0.9);
+            }
+            
+            .phone-left-2 {
+                transform: translateX(-80px) rotateY(-8deg) scale(1);
+            }
+            
+            .phone-right-1 {
+                transform: translateX(80px) rotateY(8deg) scale(1);
+            }
+            
+            .phone-right-2, .phone-hidden-right {
+                transform: translateX(160px) rotateY(15deg) scale(0.9);
+            }
+            
+            .gallery-caption {
+                font-size: 1.2rem;
+                margin-top: 30px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1598,6 +1867,43 @@
             .video-title {
                 font-size: 1.5rem;
                 padding: 0 15px;
+            }
+            
+            /* تعديلات متجاوبة لمعرض الهواتف */
+            .phones-container {
+                height: 350px;
+                margin: 30px auto;
+            }
+            
+            .phone {
+                width: 140px;
+                height: 280px;
+            }
+            
+            .phone-center {
+                width: 160px;
+                height: 320px;
+            }
+            
+            .phone-left-1, .phone-hidden-left {
+                transform: translateX(-120px) rotateY(-15deg) scale(0.9);
+            }
+            
+            .phone-left-2 {
+                transform: translateX(-60px) rotateY(-8deg) scale(1);
+            }
+            
+            .phone-right-1 {
+                transform: translateX(60px) rotateY(8deg) scale(1);
+            }
+            
+            .phone-right-2, .phone-hidden-right {
+                transform: translateX(120px) rotateY(15deg) scale(0.9);
+            }
+            
+            .gallery-caption {
+                font-size: 1rem;
+                margin-top: 20px;
             }
         }
     </style>
@@ -1891,7 +2197,7 @@
                 <div class="version-card">
                     <h4>الإصدار الثالث</h4>
                     <p>إصدار احترافي مع ميزات محسّنة وأداء متطور</p>
-                    <a href="https://www.mediafire.com/file/sc88g4vsmgwlfv9/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_3.apk/file" class="btn" style="margin-top: 15px;">تحميل الإصدار 3</a>
+                    <a href="https://www.mediafire.com/file/sc88g4vsmgwlfv9/%25D8%25A5%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_3.apk/file" class="btn" style="margin-top: 15px;">تحميل الإصدار 3</a>
                 </div>
                 
                 <div class="version-card">
@@ -1914,16 +2220,94 @@
         </div>
     </section>
 
-    <!-- معرض الصور مع إضافة Lightbox -->
-    <section class="gallery" id="gallery">
-        <div class="container">
+    <!-- معرض الصور الجديد - معرض الهواتف المتحرك -->
+    <section id="gallery" class="gallery-section">
+        <div class="gallery-container">
             <h2 class="section-title">صور من التطبيق</h2>
-            <div class="gallery-grid">
-                <!-- الصور -->
-                <img src="https://i.suar.me/av1XK/m" alt="واجهة التطبيق الرئيسية">
-                <img src="https://i.suar.me/lpoBn/m" alt="قائمة إدارة البيانات">
-                <img src="https://i.suar.me/evNBK/m" alt="تتبع تقدم الطلاب">
-                <img src="https://i.suar.me/Ozo9G/m" alt="تقارير الأداء">
+            
+            <!-- زخارف خلفية -->
+            <div class="gallery-decoration">
+                <div class="decoration-item leaf-1"><i class="fas fa-leaf"></i></div>
+                <div class="decoration-item leaf-2"><i class="fas fa-leaf"></i></div>
+                <div class="decoration-item leaf-3"><i class="fas fa-leaf"></i></div>
+                <div class="decoration-item leaf-4"><i class="fas fa-leaf"></i></div>
+                <div class="decoration-item circle-1"></div>
+                <div class="decoration-item circle-2"></div>
+            </div>
+            
+            <!-- حاوية الهواتف -->
+            <div class="phones-container">
+                <!-- الهاتف المخفي على اليسار -->
+                <div class="phone phone-hidden-left">
+                    <div class="phone-screen">
+                        <img src="https://i.suar.me/Ozo9G/m" alt="تقارير الأداء">
+                    </div>
+                </div>
+                
+                <!-- الهاتف الأيسر الأول -->
+                <div class="phone phone-left-1">
+                    <div class="phone-screen">
+                        <img src="https://i.suar.me/av1XK/m" alt="واجهة التطبيق الرئيسية">
+                    </div>
+                </div>
+                
+                <!-- الهاتف الأيسر الثاني -->
+                <div class="phone phone-left-2">
+                    <div class="phone-screen">
+                        <img src="https://i.suar.me/lpoBn/m" alt="قائمة إدارة البيانات">
+                    </div>
+                </div>
+                
+                <!-- الهاتف المركزي -->
+                <div class="phone phone-center">
+                    <div class="phone-screen">
+                        <img src="https://i.suar.me/evNBK/m" alt="تتبع تقدم الطلاب">
+                    </div>
+                </div>
+                
+                <!-- الهاتف الأيمن الأول -->
+                <div class="phone phone-right-1">
+                    <div class="phone-screen">
+                        <img src="https://i.suar.me/Ozo9G/m" alt="تقارير الأداء">
+                    </div>
+                </div>
+                
+                <!-- الهاتف الأيمن الثاني -->
+                <div class="phone phone-right-2">
+                    <div class="phone-screen">
+                        <img src="https://i.suar.me/av1XK/m" alt="واجهة التطبيق الرئيسية">
+                    </div>
+                </div>
+                
+                <!-- الهاتف المخفي على اليمين -->
+                <div class="phone phone-hidden-right">
+                    <div class="phone-screen">
+                        <img src="https://i.suar.me/lpoBn/m" alt="قائمة إدارة البيانات">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- عناصر التحكم -->
+            <div class="gallery-controls">
+                <button class="control-btn" id="prevBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="control-btn" id="nextBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            
+            <!-- نقاط التبديل -->
+            <div class="gallery-dots" id="galleryDots">
+                <div class="dot active" data-index="0"></div>
+                <div class="dot" data-index="1"></div>
+                <div class="dot" data-index="2"></div>
+                <div class="dot" data-index="3"></div>
+            </div>
+            
+            <!-- عنوان توضيحي -->
+            <div class="gallery-caption">
+                تجربة مستخدم متميزة مع واجهات بسيطة وبديهية
             </div>
         </div>
     </section>
@@ -2141,6 +2525,19 @@
                     });
                 }
             });
+
+            // إظهار النص تحت الهواتف عند التمرير
+            const gallerySection = document.getElementById('gallery');
+            const galleryCaption = document.querySelector('.gallery-caption');
+            
+            if (gallerySection) {
+                const sectionTop = gallerySection.offsetTop;
+                const sectionHeight = gallerySection.clientHeight;
+                
+                if (pageYOffset >= (sectionTop + sectionHeight * 0.3)) {
+                    galleryCaption.classList.add('visible');
+                }
+            }
         });
 
         // تبديل القائمة على الجوال
@@ -2210,7 +2607,100 @@
             
             // تهيئة Lightbox
             initLightbox();
+            
+            // بدء تأثير تبديل الهواتف التلقائي
+            startPhoneCarousel();
         });
+        
+        // تأثير تبديل الهواتف التلقائي
+        let currentPhoneIndex = 0;
+        const totalPhones = 4;
+        let carouselInterval;
+        
+        function startPhoneCarousel() {
+            // تعيين فاصل زمني للتبديل التلقائي
+            carouselInterval = setInterval(() => {
+                nextPhone();
+            }, 4000); // تبديل كل 4 ثواني
+            
+            // إضافة مستمعي الأحداث لأزرار التحكم
+            document.getElementById('prevBtn').addEventListener('click', prevPhone);
+            document.getElementById('nextBtn').addEventListener('click', nextPhone);
+            
+            // إضافة مستمعي الأحداث للنقاط
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    goToPhone(index);
+                });
+            });
+        }
+        
+        function nextPhone() {
+            currentPhoneIndex = (currentPhoneIndex + 1) % totalPhones;
+            updatePhonePositions();
+        }
+        
+        function prevPhone() {
+            currentPhoneIndex = (currentPhoneIndex - 1 + totalPhones) % totalPhones;
+            updatePhonePositions();
+        }
+        
+        function goToPhone(index) {
+            currentPhoneIndex = index;
+            updatePhonePositions();
+        }
+        
+        function updatePhonePositions() {
+            const phones = document.querySelectorAll('.phone');
+            const dots = document.querySelectorAll('.dot');
+            
+            // تحديث النقاط النشطة
+            dots.forEach((dot, index) => {
+                if (index === currentPhoneIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+            
+            // إعادة تعيين جميع الفئات
+            phones.forEach(phone => {
+                phone.classList.remove('phone-hidden-left', 'phone-left-1', 'phone-left-2', 'phone-center', 'phone-right-1', 'phone-right-2', 'phone-hidden-right');
+            });
+            
+            // تعيين الفئات بناءً على الفهرس الحالي
+            phones.forEach((phone, index) => {
+                // حساب الموضع النسبي للهاتف بناءً على الفهرس الحالي
+                const position = (index - currentPhoneIndex + 3) % 7;
+                
+                // تعيين الفئة المناسبة بناءً على الموضع
+                switch(position) {
+                    case 0:
+                        phone.classList.add('phone-hidden-left');
+                        break;
+                    case 1:
+                        phone.classList.add('phone-left-1');
+                        break;
+                    case 2:
+                        phone.classList.add('phone-left-2');
+                        break;
+                    case 3:
+                        phone.classList.add('phone-center');
+                        break;
+                    case 4:
+                        phone.classList.add('phone-right-1');
+                        break;
+                    case 5:
+                        phone.classList.add('phone-right-2');
+                        break;
+                    case 6:
+                        phone.classList.add('phone-hidden-right');
+                        break;
+                }
+            });
+        }
         
         // وظائف الرسالة الجديدة
         function sendMessage(e) {
@@ -2273,11 +2763,11 @@
             const lightboxPrev = document.getElementById('lightboxPrev');
             const lightboxNext = document.getElementById('lightboxNext');
             
-            const galleryImages = document.querySelectorAll('.gallery-grid img');
+            const phoneScreens = document.querySelectorAll('.phone-screen img');
             let currentIndex = 0;
             
             // فتح Lightbox عند النقر على صورة
-            galleryImages.forEach((img, index) => {
+            phoneScreens.forEach((img, index) => {
                 img.addEventListener('click', () => {
                     currentIndex = index;
                     openLightbox();
@@ -2299,20 +2789,20 @@
             
             // تحديث محتوى Lightbox
             function updateLightbox() {
-                const currentImg = galleryImages[currentIndex];
+                const currentImg = phoneScreens[currentIndex];
                 lightboxImg.src = currentImg.src;
                 lightboxCaption.textContent = currentImg.alt || 'صورة من التطبيق';
-                lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+                lightboxCounter.textContent = `${currentIndex + 1} / ${phoneScreens.length}`;
             }
             
             // التنقل بين الصور
             function navigate(direction) {
                 currentIndex += direction;
                 
-                if (currentIndex >= galleryImages.length) {
+                if (currentIndex >= phoneScreens.length) {
                     currentIndex = 0;
                 } else if (currentIndex < 0) {
-                    currentIndex = galleryImages.length - 1;
+                    currentIndex = phoneScreens.length - 1;
                 }
                 
                 updateLightbox();
