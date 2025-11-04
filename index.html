@@ -610,32 +610,255 @@
             font-size: 1.5rem;
         }
         
-        /* تصميم قسم الإصدارات القديمة */
-        .version-grid {
+        /* تصميم قسم الإصدارات القديمة المحسّن */
+        .versions-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, rgba(39, 71, 120, 0.8), rgba(27, 59, 89, 0.8));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .versions-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .versions-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .versions-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .versions-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .versions-subtitle {
+            font-size: 1.2rem;
+            color: #d3d3d3;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* تصميم جديد للبطاقات */
+        .versions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-top: 40px;
         }
         
         .version-card {
             background: var(--card-bg);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
+            border-radius: 15px;
+            padding: 25px;
             transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
         .version-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(93, 173, 226, 0.3);
         }
         
-        .version-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+        .version-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .version-card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(93, 173, 226, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+        
+        .version-card-title {
+            font-size: 1.5rem;
             color: var(--text-light);
+            margin: 0;
+        }
+        
+        .version-card-date {
+            font-size: 0.9rem;
+            color: #d3d3d3;
+        }
+        
+        .version-card-description {
+            color: #d3d3d3;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        .version-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        
+        .version-card-size {
+            font-size: 0.9rem;
+            color: #d3d3d3;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .version-card-badge {
+            background: var(--notification-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .download-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: var(--transition);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: var(--primary-dark);
+        }
+        
+        /* تصميم متطور للبطاقات */
+        .version-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .version-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .version-card:nth-child(1) .version-card-icon {
+            background: linear-gradient(135deg, #5DADE2, #1a60a7);
+            color: white;
+        }
+        
+        .version-card:nth-child(2) .version-card-icon {
+            background: linear-gradient(135deg, #FFA726, #F57C00);
+            color: white;
+        }
+        
+        .version-card:nth-child(3) .version-card-icon {
+            background: linear-gradient(135deg, #66BB6A, #388E3C);
+            color: white;
+        }
+        
+        .version-card:nth-child(4) .version-card-icon {
+            background: linear-gradient(135deg, #AB47BC, #8E24AA);
+            color: white;
+        }
+        
+        .section-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .decoration-item {
+            position: absolute;
+            opacity: 0.3;
+        }
+        
+        .circle-1 {
+            top: 10%;
+            left: 10%;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .circle-2 {
+            bottom: 20%;
+            right: 5%;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            animation: float 16s infinite ease-in-out 4s;
+        }
+        
+        .triangle {
+            top: 30%;
+            right: 15%;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 80px solid var(--primary-color);
+            animation: float 18s infinite ease-in-out 2s;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
         
         /* تصميم قسم الصور الجديد - معرض الهواتف المتحرك */
@@ -1622,11 +1845,10 @@
         }
         
         /* إخفاء عناصر التحكم والنقاط في معرض الصور */
-.gallery-controls,
-.gallery-dots {
-    display: none !important;
-}
-
+        .gallery-controls,
+        .gallery-dots {
+            display: none !important;
+        }
 
         /* تصميم متجاوب */
         @media (max-width: 992px) {
@@ -1796,6 +2018,23 @@
                 font-size: 1.2rem;
                 margin-top: 30px;
             }
+            
+            /* تعديلات متجاوبة للإصدارات */
+            .version-card-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .version-card-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .version-card-title {
+                font-size: 1.3rem;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1905,6 +2144,19 @@
                 font-size: 1rem;
                 margin-top: 20px;
             }
+            
+            /* تعديلات متجاوبة للإصدارات */
+            .versions-title {
+                font-size: 2rem;
+            }
+            
+            .versions-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .version-card {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -1922,6 +2174,7 @@
             <a href="#download"><i class="fas fa-download"></i> التحميل</a>
             <a href="#app-info"><i class="fas fa-info-circle"></i> معلومات التطبيق</a>
             <a href="#gallery"><i class="fas fa-images"></i> صور من التطبيق</a>
+            <a href="#previous"><i class="fas fa-history"></i> الإصدارات السابقة</a>
             <a href="#channels"><i class="fas fa-share-alt"></i> قنوات التواصل</a>
             <a href="#contact"><i class="fas fa-envelope"></i> تواصل معنا</a>
         </div>
@@ -2182,34 +2435,117 @@
         </div>
     </section>
 
-    <!-- الإصدارات القديمة -->
-    <section id="previous">
-        <div class="container">
-            <h2 class="section-title">الإصدارات السابقة</h2>
+    <!-- الإصدارات السابقة المحسّنة -->
+    <section class="versions-section" id="previous">
+        <div class="section-decoration">
+            <div class="decoration-item circle-1"></div>
+            <div class="decoration-item circle-2"></div>
+            <div class="decoration-item triangle"></div>
+        </div>
+        
+        <div class="versions-container">
+            <div class="versions-header">
+                <h2 class="versions-title">الإصدارات السابقة</h2>
+                <p class="versions-subtitle">استعرض رحلة تطور التطبيق عبر الإصدارات المختلفة، واختر الإصدار المناسب لاحتياجاتك</p>
+            </div>
             
-                            <div class="version-card">
-                    <h4>الإصدار الرابع</h4>
-                    <p>أحدث إصدار قبل النسخة الحالية</p>
-                    <a href="https://www.mediafire.com/file/b7q5w1rm72tsxlp/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_4.apk/file" class="btn" style="margin-top: 15px;">تحميل الإصدار 4</a>
-                </div>
-            
-            <div class="version-grid">
+            <!-- شبكة الإصدارات المحدثة -->
+            <div class="versions-grid">
+                <!-- الإصدار الرابع -->
                 <div class="version-card">
-                    <h4>الإصدار الثالث</h4>
-                    <p>إصدار احترافي مع ميزات محسّنة وأداء متطور</p>
-                    <a href="https://www.mediafire.com/file/sc88g4vsmgwlfv9/%25D8%25A5%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_3.apk/file" class="btn" style="margin-top: 15px;">تحميل الإصدار 3</a>
+                    <div class="version-card-header">
+                        <div class="version-card-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h3 class="version-card-title">الإصدار 4.0</h3>
+                            <div class="version-card-date">2025 يناير 24</div>
+                        </div>
+                    </div>
+                    <p class="version-card-description">إصدار محسّن مع تحسينات كبيرة في الأداء واستقرار التطبيق، بالإضافة إلى ميزات جديدة لتجربة مستخدم أفضل.</p>
+                    
+                    <div class="version-card-footer">
+                        <div class="version-card-size">
+                            <i class="fas fa-weight-hanging"></i>
+                            7.51 ميجابايت
+                        </div>
+                        <div class="version-card-badge">الأحدث سابقاً</div>
+                    </div>
+                    <a href="https://www.mediafire.com/file/b7q5w1rm72tsxlp/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_4.apk/file" class="download-btn">
+                        <i class="fas fa-download"></i> تحميل الإصدار 4
+                    </a>
                 </div>
                 
+                <!-- الإصدار الثالث -->
                 <div class="version-card">
-                    <h4>الإصدار الثاني</h4>
-                    <p>إصدار محسّن مع ميزات جديدة</p>
-                    <a href="https://www.mediafire.com/file/z6zl1xnu94mbul9/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_1.1.apk/file" class="btn" style="margin-top: 15px;">تحميل الإصدار 2</a>
+                    <div class="version-card-header">
+                        <div class="version-card-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div>
+                            <h3 class="version-card-title">الإصدار 3.0</h3>
+                            <div class="version-card-date">2025 يناير 1</div>
+                        </div>
+                    </div>
+                    <p class="version-card-description">إصدار احترافي مع ميزات محسّنة وأداء متطور، يتضمن تحسينات كبيرة في إدارة الحلقات وتقارير الأداء.</p>
+                    
+                    <div class="version-card-footer">
+                        <div class="version-card-size">
+                            <i class="fas fa-weight-hanging"></i>
+                            7.21 ميجابايت
+                        </div>
+                    </div>
+                    <a href="https://www.mediafire.com/file/sc88g4vsmgwlfv9/%25D8%25A5%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_3.apk/file" class="download-btn">
+                        <i class="fas fa-download"></i> تحميل الإصدار 3
+                    </a>
                 </div>
                 
+                <!-- الإصدار الثاني -->
                 <div class="version-card">
-                    <h4>الإصدار الأول</h4>
-                    <p>الإصدار الأساسي من التطبيق</p>
-                    <a href="https://www.mediafire.com/file/hu36qye614p7rj7/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8.apk/file" class="btn" style="margin-top: 15px;">تحميل الإصدار 1</a>
+                    <div class="version-card-header">
+                        <div class="version-card-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div>
+                            <h3 class="version-card-title">الإصدار 2.0</h3>
+                            <div class="version-card-date">2024 نوفمبر 20</div>
+                        </div>
+                    </div>
+                    <p class="version-card-description">إصدار محسّن مع ميزات جديدة وإصلاحات للأخطاء، يقدم تجربة مستخدم أكثر سلاسة واستقراراً.</p>
+                    
+                    <div class="version-card-footer">
+                        <div class="version-card-size">
+                            <i class="fas fa-weight-hanging"></i>
+                            6.16 ميجابايت
+                        </div>
+                    </div>
+                    <a href="https://www.mediafire.com/file/z6zl1xnu94mbul9/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_1.1.apk/file" class="download-btn">
+                        <i class="fas fa-download"></i> تحميل الإصدار 2
+                    </a>
+                </div>
+                
+                <!-- الإصدار الأول -->
+                <div class="version-card">
+                    <div class="version-card-header">
+                        <div class="version-card-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div>
+                            <h3 class="version-card-title">الإصدار 1.0</h3>
+                            <div class="version-card-date">2024 أكتوبر 22</div>
+                        </div>
+                    </div>
+                    <p class="version-card-description">الإصدار الأساسي من التطبيق الذي يحتوي على الميزات الأساسية لإدارة حلقات التحفيظ وتتبع تقدم الطلاب.</p>
+                    
+                    <div class="version-card-footer">
+                        <div class="version-card-size">
+                            <i class="fas fa-weight-hanging"></i>
+                            5.53 ميجابايت
+                        </div>
+                    </div>
+                    <a href="https://www.mediafire.com/file/hu36qye614p7rj7/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8.apk/file" class="download-btn">
+                        <i class="fas fa-download"></i> تحميل الإصدار 1
+                    </a>
                 </div>
             </div>
             
