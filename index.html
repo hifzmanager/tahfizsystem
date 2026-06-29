@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إدارة حلقات التحفيظ</title>
-    <link rel="icon" type="image/png" href="https://i.suar.me/Lz8wy/m">
+    <link rel="icon" type="image/png" href="https://www2.0zz0.com/2025/02/01/17/252796576.png">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* أنماط باقي الموقع تبقى كما هي */
+        /* إعدادات عامة */
         :root {
             --primary-color: #5DADE2;
             --primary-dark: #1a60a7;
@@ -21,7 +21,6 @@
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             --success-color: #2ecc71;
             --error-color: #e74c3c;
-            --notification-color: #FFA726;
         }
         
         * {
@@ -324,124 +323,6 @@
             color: #d3d3d3;
             margin-bottom: 20px;
         }
-
-        /* بطاقة إشعارات التحديثات */
-        .notification-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 30px;
-            width: 100%;
-            max-width: 500px;
-            margin: 40px auto 0;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .notification-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 167, 38, 0.5);
-        }
-        
-        .notification-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--notification-color);
-            opacity: 0.5;
-            transition: var(--transition);
-        }
-        
-        .notification-card:hover::before {
-            opacity: 1;
-        }
-        
-        .notification-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--notification-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .notification-card p {
-            color: #d3d3d3;
-            margin-bottom: 25px;
-        }
-        
-        /* تصميم زر التفعيل */
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        
-        .toggle-btn {
-            background: linear-gradient(135deg, #274778, #1b3b59);
-            border: 2px solid var(--notification-color);
-            color: white;
-            padding: 12px 35px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .toggle-btn:hover {
-            background: linear-gradient(135deg, #1b3b59, #274778);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-        
-        /* حالة التفعيل */
-        .toggle-btn.active {
-            background: var(--notification-color);
-            border-color: #F57C00;
-        }
-        
-        .toggle-btn.active .toggle-icon i {
-            color: white;
-        }
-        
-        .toggle-icon {
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-        
-        .toggle-icon i.fa-toggle-on {
-            color: var(--success-color);
-        }
-        
-        /* رسالة الحالة */
-        .status-message {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 0.95rem;
-        }
-        
-        .status-message.active {
-            background: rgba(255, 167, 38, 0.15);
-            color: var(--notification-color);
-        }
         
         /* إضافة معلومات التطبيق */
         .app-info-section {
@@ -610,503 +491,85 @@
             font-size: 1.5rem;
         }
         
-        /* تصميم قسم الإصدارات القديمة المحسّن */
-        .versions-section {
-            padding: 100px 20px;
-            background: linear-gradient(135deg, rgba(39, 71, 120, 0.8), rgba(27, 59, 89, 0.8));
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .versions-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .versions-header {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-        
-        .versions-title {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .versions-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-        
-        .versions-subtitle {
-            font-size: 1.2rem;
-            color: #d3d3d3;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-        
-        /* تصميم جديد للبطاقات */
-        .versions-grid {
+        /* تصميم قسم الإصدارات القديمة */
+        .version-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
             margin-top: 40px;
         }
         
         .version-card {
             background: var(--card-bg);
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
             transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(5px);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
         .version-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border-color: rgba(93, 173, 226, 0.3);
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
         }
         
-        .version-card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .version-card-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(93, 173, 226, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            flex-shrink: 0;
-        }
-        
-        .version-card-title {
-            font-size: 1.5rem;
+        .version-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
             color: var(--text-light);
-            margin: 0;
         }
         
-        .version-card-date {
-            font-size: 0.9rem;
-            color: #d3d3d3;
+        /* تصميم قسم الصور - مع تعديلات Lightbox */
+        .gallery {
+            margin: 30px auto;
+            text-align: center;
         }
-        
-        .version-card-description {
-            color: #d3d3d3;
+
+        .gallery h2 {
+            font-size: 2em;
             margin-bottom: 20px;
-            line-height: 1.6;
-            flex-grow: 1;
+            color: #5DADE2;
         }
-        
-        .version-card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
-        }
-        
-        .version-card-size {
-            font-size: 0.9rem;
-            color: #d3d3d3;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .version-card-badge {
-            background: var(--notification-color);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-        
-        .download-btn {
-            padding: 10px 25px;
-            font-size: 1rem;
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            transition: var(--transition);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            justify-content: center;
-            margin-top: 15px;
-        }
-        
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            background: var(--primary-dark);
-        }
-        
-        /* تصميم متطور للبطاقات */
-        .version-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--primary-color);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-        
-        .version-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .version-card:nth-child(1) .version-card-icon {
-            background: linear-gradient(135deg, #5DADE2, #1a60a7);
-            color: white;
-        }
-        
-        .version-card:nth-child(2) .version-card-icon {
-            background: linear-gradient(135deg, #FFA726, #F57C00);
-            color: white;
-        }
-        
-        .version-card:nth-child(3) .version-card-icon {
-            background: linear-gradient(135deg, #66BB6A, #388E3C);
-            color: white;
-        }
-        
-        .version-card:nth-child(4) .version-card-icon {
-            background: linear-gradient(135deg, #AB47BC, #8E24AA);
-            color: white;
-        }
-        
-        .section-decoration {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            opacity: 0.1;
-        }
-        
-        .decoration-item {
-            position: absolute;
-            opacity: 0.3;
-        }
-        
-        .circle-1 {
-            top: 10%;
-            left: 10%;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid var(--primary-color);
-            animation: float 20s infinite ease-in-out;
-        }
-        
-        .circle-2 {
-            bottom: 20%;
-            right: 5%;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 2px solid var(--primary-color);
-            animation: float 16s infinite ease-in-out 4s;
-        }
-        
-        .triangle {
-            top: 30%;
-            right: 15%;
-            width: 0;
-            height: 0;
-            border-left: 50px solid transparent;
-            border-right: 50px solid transparent;
-            border-bottom: 80px solid var(--primary-color);
-            animation: float 18s infinite ease-in-out 2s;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-        
-        /* تصميم قسم الصور الجديد - معرض الهواتف المتحرك */
-        .gallery-section {
-            padding: 100px 20px;
-            background: linear-gradient(135deg, rgba(39, 71, 120, 0.7), rgba(27, 59, 89, 0.7));
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .gallery-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .phones-container {
-            position: relative;
-            height: 600px;
-            margin: 60px auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            perspective: 1200px;
-        }
-        
-        .phone {
-            position: absolute;
-            width: 280px;
-            height: 560px;
-            background: #f0f0f0;
-            border-radius: 40px;
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.4),
-                inset 0 0 0 2px rgba(255, 255, 255, 0.1),
-                inset 0 0 20px rgba(0, 0, 0, 0.2);
-            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .phone-screen {
-            width: 92%;
-            height: 96%;
-            border-radius: 30px;
-            overflow: hidden;
-            background: #fff;
-            position: relative;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .phone-screen img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        /* الهاتف المركزي - الأكبر */
-        .phone-center {
-            width: 300px;
-            height: 600px;
-            z-index: 10;
-            transform: translateX(0) rotateY(0deg) scale(1.1);
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.5),
-                inset 0 0 0 2px rgba(255, 255, 255, 0.1),
-                inset 0 0 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* الهاتف الأيسر الأول */
-        .phone-left-1 {
-            transform: translateX(-280px) rotateY(-15deg) scale(0.9);
-            z-index: 5;
-            filter: brightness(0.8);
-        }
-        
-        /* الهاتف الأيسر الثاني */
-        .phone-left-2 {
-            transform: translateX(-140px) rotateY(-8deg) scale(1);
-            z-index: 7;
-            filter: brightness(0.9);
-        }
-        
-        /* الهاتف الأيمن الأول */
-        .phone-right-1 {
-            transform: translateX(140px) rotateY(8deg) scale(1);
-            z-index: 7;
-            filter: brightness(0.9);
-        }
-        
-        /* الهاتف الأيمن الثاني */
-        .phone-right-2 {
-            transform: translateX(280px) rotateY(15deg) scale(0.9);
-            z-index: 5;
-            filter: brightness(0.8);
-        }
-        
-        /* الهاتف المخفي على اليسار */
-        .phone-hidden-left {
-            transform: translateX(-420px) rotateY(-25deg) scale(0.8);
-            z-index: 3;
-            filter: brightness(0.6);
-            opacity: 0.7;
-        }
-        
-        /* الهاتف المخفي على اليمين */
-        .phone-hidden-right {
-            transform: translateX(420px) rotateY(25deg) scale(0.8);
-            z-index: 3;
-            filter: brightness(0.6);
-            opacity: 0.7;
-        }
-        
-        .gallery-caption {
-            margin-top: 50px;
-            font-size: 1.5rem;
-            color: white;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
-        }
-        
-        .gallery-caption.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* عناصر التحكم */
-        .gallery-controls {
-            display: flex;
-            justify-content: center;
+
+        .gallery-grid {
+            display: grid;
             gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            padding: 20px;
         }
-        
-        .control-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: none;
-            font-size: 1.2rem;
+
+        .gallery-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .white-line::after {
+            background: #ffffff;
         }
         
-        .control-btn:hover {
-            background: var(--primary-color);
-            transform: scale(1.1);
-        }
-        
-        /* نقاط التبديل */
-        .gallery-dots {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .dot.active {
-            background: var(--primary-color);
-            transform: scale(1.2);
-        }
-        
-        /* زخارف خلفية */
-        .gallery-decoration {
+        /* إعداد الحاوية لتكون خلفية ثابتة */
+        .circles {
             position: absolute;
             width: 100%;
             height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
             overflow: hidden;
-            opacity: 0.1;
+            z-index: -1;
         }
-        
-        .decoration-item {
-            position: absolute;
-            opacity: 0.3;
-        }
-        
-        .leaf-1 {
-            top: 10%;
-            left: 10%;
-            font-size: 4rem;
-            color: var(--primary-color);
-            animation: float 15s infinite ease-in-out;
-        }
-        
-        .leaf-2 {
-            top: 70%;
-            right: 5%;
-            font-size: 3rem;
-            color: var(--primary-color);
-            animation: float 12s infinite ease-in-out 2s;
-        }
-        
-        .leaf-3 {
-            bottom: 20%;
-            left: 15%;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            animation: float 18s infinite ease-in-out 1s;
-        }
-        
-        .leaf-4 {
-            top: 30%;
-            right: 15%;
-            font-size: 3.5rem;
-            color: var(--primary-color);
-            animation: float 14s infinite ease-in-out 3s;
-        }
-        
-        .circle-1 {
-            top: 20%;
-            right: 20%;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 2px solid var(--primary-color);
-            animation: float 20s infinite ease-in-out;
-        }
-        
-        .circle-2 {
-            bottom: 30%;
-            left: 20%;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 2px solid var(--primary-color);
-            animation: float 16s infinite ease-in-out 4s;
+
+        .gallery h2 {
+            color: white; /* لتغيير اللون إلى الأبيض */
+            text-align: center; /* لجعل النص في الوسط */
+            font-size: 24px; /* حجم الخط */
+            margin-bottom: 20px; /* مسافة أسفل العنوان */
         }
         
         /* تصميم Lightbox */
@@ -1212,148 +675,6 @@
             background: rgba(0, 0, 0, 0.5);
             padding: 5px 15px;
             border-radius: 20px;
-        }
-        
-        /* قسم قنوات التواصل */
-        .channels-section {
-            background: linear-gradient(135deg, rgba(39, 71, 120, 0.7), rgba(27, 59, 89, 0.7));
-            padding: 100px 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .channels-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .channels-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .channel-card {
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .channel-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-        
-        .channel-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            transition: all 0.4s ease;
-        }
-        
-        .channel-card:hover .channel-icon {
-            transform: scale(1.1);
-        }
-        
-        .whatsapp .channel-icon {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-        }
-        
-        .telegram .channel-icon {
-            background: linear-gradient(135deg, #0088cc, #2AABEE);
-            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
-        }
-        
-        .youtube .channel-icon {
-            background: linear-gradient(135deg, #FF0000, #CD201F);
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
-        }
-        
-        .channel-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: white;
-        }
-        
-        .channel-card p {
-            color: #d3d3d3;
-            margin-bottom: 25px;
-            line-height: 1.7;
-        }
-        
-        .channel-btn {
-            padding: 12px 35px;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            margin-top: 15px;
-        }
-        
-        .whatsapp .channel-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-        }
-        
-        .telegram .channel-btn {
-            background: linear-gradient(135deg, #0088cc, #2AABEE);
-            color: white;
-            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
-        }
-        
-        .youtube .channel-btn {
-            background: linear-gradient(135deg, #FF0000, #CD201F);
-            color: white;
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
-        }
-        
-        .channel-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-        
-        .channel-decoration {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            opacity: 0.1;
-        }
-        
-        .whatsapp .channel-decoration {
-            background: radial-gradient(circle, #25D366 0%, transparent 70%);
-        }
-        
-        .telegram .channel-decoration {
-            background: radial-gradient(circle, #0088cc 0%, transparent 70%);
-        }
-        
-        .youtube .channel-decoration {
-            background: radial-gradient(circle, #FF0000 0%, transparent 70%);
         }
         
         /* تصميم قسم التواصل */
@@ -1639,217 +960,6 @@
             line-height: 1.7;
         }
         
-        /* رسالة التأكيد الجديدة */
-        .message-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .message-content {
-            background: var(--card-bg);
-            width: 90%;
-            max-width: 500px;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            animation: popIn 0.5s ease-out forwards;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(93, 173, 226, 0.5);
-            backdrop-filter: blur(10px);
-        }
-        
-        .message-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            color: var(--success-color);
-            animation: bounce 1s ease infinite;
-        }
-        
-        .message-title {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: var(--success-color);
-        }
-        
-        .message-text {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            color: #f0f0f0;
-            line-height: 1.6;
-        }
-        
-        .modal-btn {
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .modal-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-        }
-        
-        .error-icon {
-            color: var(--error-color);
-        }
-        
-        .error-title {
-            color: var(--error-color);
-        }
-        
-        .notification-icon {
-            color: var(--notification-color);
-        }
-        
-        @keyframes popIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.7) translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-20px);
-            }
-            60% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        /* تصميم مشغل الفيديو الجديد */
-        .video-player-container {
-            position: relative;
-            max-width: 800px;
-            margin: 40px auto;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            background: #000;
-            display: none; /* سيتم إظهاره عند الطلب */
-        }
-        
-        .video-player {
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* نسبة 16:9 */
-            position: relative;
-        }
-        
-        .video-player iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 1;
-            transition: opacity 0.4s ease;
-            z-index: 2;
-        }
-        
-        .video-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .video-title {
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            text-align: center;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-        }
-        
-        .play-btn {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.3s ease, background 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-        
-        .play-btn:hover {
-            transform: scale(1.1);
-            background: var(--primary-dark);
-        }
-        
-        .play-btn i {
-            font-size: 2.5rem;
-            color: white;
-        }
-        
-        .video-close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            z-index: 3;
-            background: rgba(0, 0, 0, 0.5);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .video-close-btn:hover {
-            transform: rotate(90deg);
-            background: var(--accent-color);
-        }
-        
-        /* إخفاء عناصر التحكم والنقاط في معرض الصور */
-        .gallery-controls,
-        .gallery-dots {
-            display: none !important;
-        }
-
         /* تصميم متجاوب */
         @media (max-width: 992px) {
             header h1 {
@@ -1866,40 +976,6 @@
             
             .app-info-card {
                 min-height: 220px;
-            }
-            
-            .video-title {
-                font-size: 1.8rem;
-            }
-            
-            .phone {
-                width: 240px;
-                height: 480px;
-            }
-            
-            .phone-center {
-                width: 260px;
-                height: 520px;
-            }
-            
-            .phone-left-1, .phone-hidden-left {
-                transform: translateX(-220px) rotateY(-15deg) scale(0.9);
-            }
-            
-            .phone-left-2 {
-                transform: translateX(-110px) rotateY(-8deg) scale(1);
-            }
-            
-            .phone-right-1 {
-                transform: translateX(110px) rotateY(8deg) scale(1);
-            }
-            
-            .phone-right-2, .phone-hidden-right {
-                transform: translateX(220px) rotateY(15deg) scale(0.9);
-            }
-            
-            .phones-container {
-                height: 500px;
             }
         }
         
@@ -1976,65 +1052,6 @@
             .lightbox-caption {
                 font-size: 1rem;
             }
-            
-            .play-btn {
-                width: 70px;
-                height: 70px;
-            }
-            
-            /* تعديلات متجاوبة لمعرض الهواتف */
-            .phones-container {
-                height: 400px;
-                margin: 40px auto;
-            }
-            
-            .phone {
-                width: 180px;
-                height: 360px;
-            }
-            
-            .phone-center {
-                width: 200px;
-                height: 400px;
-            }
-            
-            .phone-left-1, .phone-hidden-left {
-                transform: translateX(-160px) rotateY(-15deg) scale(0.9);
-            }
-            
-            .phone-left-2 {
-                transform: translateX(-80px) rotateY(-8deg) scale(1);
-            }
-            
-            .phone-right-1 {
-                transform: translateX(80px) rotateY(8deg) scale(1);
-            }
-            
-            .phone-right-2, .phone-hidden-right {
-                transform: translateX(160px) rotateY(15deg) scale(0.9);
-            }
-            
-            .gallery-caption {
-                font-size: 1.2rem;
-                margin-top: 30px;
-            }
-            
-            /* تعديلات متجاوبة للإصدارات */
-            .version-card-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-            
-            .version-card-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-            
-            .version-card-title {
-                font-size: 1.3rem;
-            }
         }
         
         @media (max-width: 576px) {
@@ -2097,65 +1114,103 @@
                 bottom: 10px;
                 font-size: 1rem;
             }
-            
-            .toggle-btn {
-                padding: 10px 25px;
-                font-size: 1rem;
+        }
+        
+        /* رسالة التأكيد الجديدة */
+        .message-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .message-content {
+            background: var(--card-bg);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            animation: popIn 0.5s ease-out forwards;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(93, 173, 226, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        .message-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--success-color);
+            animation: bounce 1s ease infinite;
+        }
+        
+        .message-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--success-color);
+        }
+        
+        .message-text {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+        
+        .modal-btn {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .modal-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        .error-icon {
+            color: var(--error-color);
+        }
+        
+        .error-title {
+            color: var(--error-color);
+        }
+        
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) translateY(20px);
             }
-            
-            .video-title {
-                font-size: 1.5rem;
-                padding: 0 15px;
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
             }
-            
-            /* تعديلات متجاوبة لمعرض الهواتف */
-            .phones-container {
-                height: 350px;
-                margin: 30px auto;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
             }
-            
-            .phone {
-                width: 140px;
-                height: 280px;
+            40% {
+                transform: translateY(-20px);
             }
-            
-            .phone-center {
-                width: 160px;
-                height: 320px;
-            }
-            
-            .phone-left-1, .phone-hidden-left {
-                transform: translateX(-120px) rotateY(-15deg) scale(0.9);
-            }
-            
-            .phone-left-2 {
-                transform: translateX(-60px) rotateY(-8deg) scale(1);
-            }
-            
-            .phone-right-1 {
-                transform: translateX(60px) rotateY(8deg) scale(1);
-            }
-            
-            .phone-right-2, .phone-hidden-right {
-                transform: translateX(120px) rotateY(15deg) scale(0.9);
-            }
-            
-            .gallery-caption {
-                font-size: 1rem;
-                margin-top: 20px;
-            }
-            
-            /* تعديلات متجاوبة للإصدارات */
-            .versions-title {
-                font-size: 2rem;
-            }
-            
-            .versions-subtitle {
-                font-size: 0.9rem;
-            }
-            
-            .version-card {
-                padding: 20px;
+            60% {
+                transform: translateY(-10px);
             }
         }
     </style>
@@ -2165,7 +1220,7 @@
     <!-- شريط التنقل الثابت -->
     <nav class="navbar" id="navbar">
         <div class="logo">
-            <img src="https://i.suar.me/Lz8wy/m" alt="شعار إدارة حلقات التحفيظ">
+            <img src="https://www2.0zz0.com/2025/02/01/17/252796576.png" alt="شعار إدارة حلقات التحفيظ">
             <div class="logo-text">إدارة حلقات التحفيظ</div>
         </div>
         
@@ -2174,8 +1229,6 @@
             <a href="#download"><i class="fas fa-download"></i> التحميل</a>
             <a href="#app-info"><i class="fas fa-info-circle"></i> معلومات التطبيق</a>
             <a href="#gallery"><i class="fas fa-images"></i> صور من التطبيق</a>
-            <a href="#previous"><i class="fas fa-history"></i> الإصدارات السابقة</a>
-            <a href="#channels"><i class="fas fa-share-alt"></i> قنوات التواصل</a>
             <a href="#contact"><i class="fas fa-envelope"></i> تواصل معنا</a>
         </div>
         
@@ -2274,60 +1327,26 @@
         <div class="container">
             <h2 class="section-title">تحميل التطبيق</h2>
             
-            <div class="version-badge">الإصدار الخامس (الأحدث)</div>
+            <div class="version-badge">الإصدار الرابع (الأحدث)</div>
             <p style="max-width: 700px; margin: 0 auto 30px; font-size: 1.1rem;">
                 حمّل أحدث إصدار من التطبيق واستمتع بجميع الميزات المحسّنة والتحديثات الجديدة
             </p>
             
-            <!-- زر مشاهدة الفيديو التعريفي -->
-            <a href="#" id="videoTrigger" class="btn" style="margin-bottom: 30px;">
+            <a href="https://youtu.be/ucYwvFyW97M?si=An7FXYN9gtSpG-ex" target="_blank" class="btn" style="margin-bottom: 30px;">
                 <i class="fas fa-play-circle"></i> مشاهدة الفيديو التعريفي
             </a>
-            
-            <!-- مشغل الفيديو المدمج -->
-            <div class="video-player-container" id="videoPlayer">
-                <div class="video-player">
-                    <iframe id="videoFrame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-overlay" id="videoOverlay">
-                    <h3 class="video-title">فيديو تعريفي عن تطبيق إدارة حلقات التحفيظ</h3>
-                    <div class="play-btn" id="playBtn">
-                        <i class="fas fa-play"></i>
-                    </div>
-                </div>
-                <div class="video-close-btn" id="videoCloseBtn">
-                    <i class="fas fa-times"></i>
-                </div>
-            </div>
             
             <div class="download-options">
                 <div class="download-card">
                     <h3><i class="fas fa-cloud-download-alt"></i> التحميل المباشر</h3>
                     <p>تحميل مباشر وسريع من سيرفرات آمنة</p>
-                    <a href="https://www.dropbox.com/scl/fi/rpf87zokpyytmi70pgegv/_5.apk?rlkey=cud0nw171z37qion7bibj01r7&st=a1jjgbof&dl=1" class="btn">تحميل الآن</a>
+                    <a href="https://www.dropbox.com/scl/fi/fe2i6vt3wtl3rgsfgu7fj/_4.apk?rlkey=kwxdqhdz439fk12gn146js1ft&st=yu2d9370&dl=1" class="btn">تحميل الآن</a>
                 </div>
                 
                 <div class="download-card">
                     <h3><i class="fab fa-medapps"></i> MediaFire</h3>
                     <p>تحميل من منصة MediaFire الموثوقة</p>
-                    <a href="https://www.mediafire.com/file/cfdxriy90dm4mjn/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_5.apk/file" class="btn">تحميل الآن</a>
-                </div>
-            </div>
-            
-            <!-- بطاقة إشعارات التحديثات -->
-            <div class="notification-card">
-                <h3><i class="fas fa-bell"></i> اشعارات التحديثات</h3>
-                <p>اشترك لتصلك إشعارات فورية عند نزول تحديثات جديدة للتطبيق</p>
-                <div class="toggle-container">
-                    <button id="notificationToggle" class="toggle-btn">
-                        <span id="toggleText">تفعيل الإشعارات</span>
-                        <span id="toggleIcon" class="toggle-icon">
-                            <i class="fas fa-toggle-off"></i>
-                        </span>
-                    </button>
-                </div>
-                <div id="notificationStatus" class="status-message">
-                    <i class="fas fa-info-circle"></i> الإشعارات غير مفعلة حالياً
+                    <a href="https://www.mediafire.com/file/b7q5w1rm72tsxlp/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_4.apk/file" class="btn">تحميل الآن</a>
                 </div>
             </div>
             
@@ -2351,7 +1370,7 @@
                         <i class="fas fa-weight-hanging"></i>
                     </div>
                     <h3>حجم التطبيق</h3>
-                    <div class="value">13.62 ميجابايت</div>
+                    <div class="value">7.51 ميجابايت</div>
                     <div class="sub-value">حجم صغير لا يشغل مساحة كبيرة</div>
                 </div>
                 
@@ -2361,7 +1380,7 @@
                     </div>
                     <h3>الناشر</h3>
                     <div class="value">عبدالرحمن طارق الفلق</div>
-                    <div class="sub-value">مطور تطبيقات أندرويد ومواقع ويب</div>
+                    <div class="sub-value">مطور تطبيقات أندرويد</div>
                 </div>
                 
                 <div class="app-info-card">
@@ -2369,7 +1388,7 @@
                         <i class="fas fa-calendar-alt"></i>
                     </div>
                     <h3>آخر تحديث</h3>
-                    <div class="value">24 أكتوبر 2025</div>
+                    <div class="value">24 يناير 2025</div>
                     <div class="sub-value">أحدث إصدار متوفر</div>
                 </div>
                 
@@ -2387,8 +1406,8 @@
                         <i class="fas fa-code-branch"></i>
                     </div>
                     <h3>الإصدار</h3>
-                    <div class="value">5.0</div>
-                    <div class="sub-value">الإصدار الخامس</div>
+                    <div class="value">4.0</div>
+                    <div class="sub-value">الإصدار الرابع</div>
                 </div>
                 
                 <div class="app-info-card">
@@ -2435,263 +1454,48 @@
         </div>
     </section>
 
-    <!-- الإصدارات السابقة المحسّنة -->
-    <section class="versions-section" id="previous">
-        <div class="section-decoration">
-            <div class="decoration-item circle-1"></div>
-            <div class="decoration-item circle-2"></div>
-            <div class="decoration-item triangle"></div>
-        </div>
-        
-        <div class="versions-container">
-            <div class="versions-header">
-                <h2 class="versions-title">الإصدارات السابقة</h2>
-                <p class="versions-subtitle">استعرض رحلة تطور التطبيق عبر الإصدارات المختلفة</p>
-            </div>
+    <!-- الإصدارات القديمة -->
+    <section id="previous">
+        <div class="container">
+            <h2 class="section-title">الإصدارات السابقة</h2>
             
-            <!-- شبكة الإصدارات المحدثة -->
-            <div class="versions-grid">
-                <!-- الإصدار الرابع -->
+            <div class="version-grid">
                 <div class="version-card">
-                    <div class="version-card-header">
-                        <div class="version-card-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <div>
-                            <h3 class="version-card-title">الإصدار 4.0</h3>
-                            <div class="version-card-date">2025 يناير 24</div>
-                        </div>
-                    </div>
-                    <p class="version-card-description">إصدار محسّن مع تحسينات كبيرة في الأداء واستقرار التطبيق، بالإضافة إلى ميزات جديدة لتجربة مستخدم أفضل.</p>
-                    
-                    <div class="version-card-footer">
-                        <div class="version-card-size">
-                            <i class="fas fa-weight-hanging"></i>
-                            7.51 ميجابايت
-                        </div>
-                        <div class="version-card-badge">الأحدث سابقاً</div>
-                    </div>
-                    <a href="https://www.mediafire.com/file/b7q5w1rm72tsxlp/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_4.apk/file" class="download-btn">
-                        <i class="fas fa-download"></i> تحميل الإصدار 4
-                    </a>
+                    <h4>الإصدار الثالث</h4>
+                    <p>أحدث إصدار قبل النسخة الحالية</p>
+                    <a href="https://www.mediafire.com/file/sc88g4vsmgwlfv9/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_3.apk/file" class="btn" style="margin-top: 15px;">تحميل الإصدار 3</a>
                 </div>
                 
-                <!-- الإصدار الثالث -->
                 <div class="version-card">
-                    <div class="version-card-header">
-                        <div class="version-card-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div>
-                            <h3 class="version-card-title">الإصدار 3.0</h3>
-                            <div class="version-card-date">2025 يناير 1</div>
-                        </div>
-                    </div>
-                    <p class="version-card-description">إصدار احترافي مع ميزات محسّنة وأداء متطور، يتضمن تحسينات كبيرة في إدارة الحلقات وتقارير الأداء.</p>
-                    
-                    <div class="version-card-footer">
-                        <div class="version-card-size">
-                            <i class="fas fa-weight-hanging"></i>
-                            7.21 ميجابايت
-                        </div>
-                    </div>
-                    <a href="https://www.mediafire.com/file/sc88g4vsmgwlfv9/%25D8%25A5%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_3.apk/file" class="download-btn">
-                        <i class="fas fa-download"></i> تحميل الإصدار 3
-                    </a>
+                    <h4>الإصدار الثاني</h4>
+                    <p>إصدار محسّن مع ميزات جديدة</p>
+                    <a href="https://www.mediafire.com/file/z6zl1xnu94mbul9/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_1.1.apk/file" class="btn" style="margin-top: 15px;">تحميل الإصدار 2</a>
                 </div>
                 
-                <!-- الإصدار الثاني -->
                 <div class="version-card">
-                    <div class="version-card-header">
-                        <div class="version-card-icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <div>
-                            <h3 class="version-card-title">الإصدار 2.0</h3>
-                            <div class="version-card-date">2024 نوفمبر 20</div>
-                        </div>
-                    </div>
-                    <p class="version-card-description">إصدار محسّن مع ميزات جديدة وإصلاحات للأخطاء، يقدم تجربة مستخدم أكثر سلاسة واستقراراً.</p>
-                    
-                    <div class="version-card-footer">
-                        <div class="version-card-size">
-                            <i class="fas fa-weight-hanging"></i>
-                            6.16 ميجابايت
-                        </div>
-                    </div>
-                    <a href="https://www.mediafire.com/file/z6zl1xnu94mbul9/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8_1.1.apk/file" class="download-btn">
-                        <i class="fas fa-download"></i> تحميل الإصدار 2
-                    </a>
-                </div>
-                
-                <!-- الإصدار الأول -->
-                <div class="version-card">
-                    <div class="version-card-header">
-                        <div class="version-card-icon">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                        <div>
-                            <h3 class="version-card-title">الإصدار 1.0</h3>
-                            <div class="version-card-date">2024 أكتوبر 22</div>
-                        </div>
-                    </div>
-                    <p class="version-card-description">الإصدار الأساسي من التطبيق الذي يحتوي على الميزات الأساسية لإدارة حلقات التحفيظ وتتبع تقدم الطلاب.</p>
-                    
-                    <div class="version-card-footer">
-                        <div class="version-card-size">
-                            <i class="fas fa-weight-hanging"></i>
-                            5.53 ميجابايت
-                        </div>
-                    </div>
-                    <a href="https://www.mediafire.com/file/hu36qye614p7rj7/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8.apk/file" class="download-btn">
-                        <i class="fas fa-download"></i> تحميل الإصدار 1
-                    </a>
+                    <h4>الإصدار الأول</h4>
+                    <p>الإصدار الأساسي من التطبيق</p>
+                    <a href="https://www.mediafire.com/file/hu36qye614p7rj7/%25D8%25A5%25D8%25AF%25D8%25A7%25D8%25B1%25D8%25A9_%25D8%25AD%25D9%2584%25D9%2582%25D8%25A7%25D8%25AA_%25D8%25A7%25D9%2584%25D8%25AA%25D8%25AD%25D9%2581%25D9%258A%25D8%25B8.apk/file" class="btn" style="margin-top: 15px;">تحميل الإصدار 1</a>
                 </div>
             </div>
             
             <div class="custom-note">
                 <h4><i class="fas fa-info-circle"></i> ملاحظة هامة</h4>
-                <p>هذا هو الإصدار الخامس من التطبيق، ونحن نعمل على تطويره وتحديثه باستمرار. يوصى دائماً باستخدام أحدث إصدار للاستفادة من جميع الميزات والتحديثات الأمنية.</p>
+                <p>هذا هو الإصدار الرابع من التطبيق، ونحن نعمل على تطويره وتحديثه باستمرار. يوصى دائماً باستخدام أحدث إصدار للاستفادة من جميع الميزات والتحديثات الأمنية.</p>
             </div>
         </div>
     </section>
 
-    <!-- معرض الصور الجديد - معرض الهواتف المتحرك -->
-    <section id="gallery" class="gallery-section">
-        <div class="gallery-container">
+    <!-- معرض الصور مع إضافة Lightbox -->
+    <section class="gallery" id="gallery">
+        <div class="container">
             <h2 class="section-title">صور من التطبيق</h2>
-            
-            <!-- زخارف خلفية -->
-            <div class="gallery-decoration">
-                <div class="decoration-item leaf-1"><i class="fas fa-leaf"></i></div>
-                <div class="decoration-item leaf-2"><i class="fas fa-leaf"></i></div>
-                <div class="decoration-item leaf-3"><i class="fas fa-leaf"></i></div>
-                <div class="decoration-item leaf-4"><i class="fas fa-leaf"></i></div>
-                <div class="decoration-item circle-1"></div>
-                <div class="decoration-item circle-2"></div>
-            </div>
-            
-            <!-- حاوية الهواتف -->
-            <div class="phones-container">
-                <!-- الهاتف المخفي على اليسار -->
-                <div class="phone phone-hidden-left">
-                    <div class="phone-screen">
-                        <img src="https://i.suar.me/Ozo9G/m" alt="تقارير الأداء">
-                    </div>
-                </div>
-                
-                <!-- الهاتف الأيسر الأول -->
-                <div class="phone phone-left-1">
-                    <div class="phone-screen">
-                        <img src="https://i.suar.me/av1XK/m" alt="واجهة التطبيق الرئيسية">
-                    </div>
-                </div>
-                
-                <!-- الهاتف الأيسر الثاني -->
-                <div class="phone phone-left-2">
-                    <div class="phone-screen">
-                        <img src="https://i.suar.me/lpoBn/m" alt="قائمة إدارة البيانات">
-                    </div>
-                </div>
-                
-                <!-- الهاتف المركزي -->
-                <div class="phone phone-center">
-                    <div class="phone-screen">
-                        <img src="https://i.suar.me/evNBK/m" alt="تتبع تقدم الطلاب">
-                    </div>
-                </div>
-                
-                <!-- الهاتف الأيمن الأول -->
-                <div class="phone phone-right-1">
-                    <div class="phone-screen">
-                        <img src="https://i.suar.me/Ozo9G/m" alt="تقارير الأداء">
-                    </div>
-                </div>
-                
-                <!-- الهاتف الأيمن الثاني -->
-                <div class="phone phone-right-2">
-                    <div class="phone-screen">
-                        <img src="https://i.suar.me/av1XK/m" alt="واجهة التطبيق الرئيسية">
-                    </div>
-                </div>
-                
-                <!-- الهاتف المخفي على اليمين -->
-                <div class="phone phone-hidden-right">
-                    <div class="phone-screen">
-                        <img src="https://i.suar.me/lpoBn/m" alt="قائمة إدارة البيانات">
-                    </div>
-                </div>
-            </div>
-            
-            <!-- عناصر التحكم -->
-            <div class="gallery-controls">
-                <button class="control-btn" id="prevBtn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <button class="control-btn" id="nextBtn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-            </div>
-            
-            <!-- نقاط التبديل -->
-            <div class="gallery-dots" id="galleryDots">
-                <div class="dot active" data-index="0"></div>
-                <div class="dot" data-index="1"></div>
-                <div class="dot" data-index="2"></div>
-                <div class="dot" data-index="3"></div>
-            </div>
-            
-            <!-- عنوان توضيحي -->
-            <div class="gallery-caption">
-                تجربة مستخدم متميزة مع واجهات بسيطة وبديهية
-            </div>
-        </div>
-    </section>
-
-    <!-- قسم قنوات التواصل الجديد -->
-    <section id="channels" class="channels-section">
-        <div class="channels-container">
-            <h2 class="section-title">قنوات التواصل</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem;">
-                انضم إلى قنواتنا على منصات التواصل الاجتماعي لتبقى على اطلاع دائم بآخر التحديثات والأخبار حول التطبيق
-            </p>
-            
-            <div class="channels-grid">
-                <div class="channel-card whatsapp">
-                    <div class="channel-decoration"></div>
-                    <div class="channel-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3>قناة الواتساب</h3>
-                    <p>انضم إلى قناتنا على الواتساب لتلقي إشعارات فورية بالتحديثات الجديدة، الحلقات التعليمية، والنصائح المفيدة لإدارة حلقات التحفيظ.</p>
-                    <a href="https://whatsapp.com/channel/0029VasxlRQ4Crfb1WwfXS1u" target="_blank" class="channel-btn">
-                        <i class="fab fa-whatsapp"></i> انضم الآن
-                    </a>
-                </div>
-                
-                <div class="channel-card telegram">
-                    <div class="channel-decoration"></div>
-                    <div class="channel-icon">
-                        <i class="fab fa-telegram"></i>
-                    </div>
-                    <h3>قناة التلجرام</h3>
-                    <p>اشترك في قناتنا على التلجرام لتحصل على آخر التحديثات، الإعلانات المهمة، والمحتوى التعليمي المتعلق بتطبيق إدارة حلقات التحفيظ.</p>
-                    <a href="https://t.me/TahfeezManager" target="_blank" class="channel-btn">
-                        <i class="fab fa-telegram"></i> انضم الآن
-                    </a>
-                </div>
-                
-                <div class="channel-card youtube">
-                    <div class="channel-decoration"></div>
-                    <div class="channel-icon">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <h3>قناة اليوتيوب</h3>
-                    <p>اشترك في قناتنا على اليوتيوب لمشاهدة الفيديوهات التعليمية، الشروحات المفصلة، والتحديثات الجديدة للتطبيق بشكل مرئي ومبسط.</p>
-                    <a href="https://youtube.com/@edara_qr?si=ADqDRwSIvsleZTZd" target="_blank" class="channel-btn">
-                        <i class="fab fa-youtube"></i> انضم الآن
-                    </a>
-                </div>
+            <div class="gallery-grid">
+                <!-- الصور -->
+                <img src="https://www2.0zz0.com/2024/12/26/08/875661458.jpg" alt="واجهة التطبيق الرئيسية">
+                <img src="https://www2.0zz0.com/2024/12/26/08/560766280.jpg" alt="قائمة إدارة الحلقات">
+                <img src="https://www2.0zz0.com/2024/12/26/10/587672596.jpg" alt="تتبع تقدم الطلاب">
+                <img src="https://www2.0zz0.com/2024/12/26/10/309818401.jpg" alt="تقارير الأداء">
             </div>
         </div>
     </section>
@@ -2861,19 +1665,6 @@
                     });
                 }
             });
-
-            // إظهار النص تحت الهواتف عند التمرير
-            const gallerySection = document.getElementById('gallery');
-            const galleryCaption = document.querySelector('.gallery-caption');
-            
-            if (gallerySection) {
-                const sectionTop = gallerySection.offsetTop;
-                const sectionHeight = gallerySection.clientHeight;
-                
-                if (pageYOffset >= (sectionTop + sectionHeight * 0.3)) {
-                    galleryCaption.classList.add('visible');
-                }
-            }
         });
 
         // تبديل القائمة على الجوال
@@ -2923,7 +1714,7 @@
                 });
             }, { threshold: 0.1 });
             
-            document.querySelectorAll('.feature-card, .download-card, .version-card, .app-info-card, .channel-card').forEach(card => {
+            document.querySelectorAll('.feature-card, .download-card, .version-card, .app-info-card').forEach(card => {
                 card.style.opacity = 0;
                 card.style.transform = 'translateY(30px)';
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -2943,100 +1734,7 @@
             
             // تهيئة Lightbox
             initLightbox();
-            
-            // بدء تأثير تبديل الهواتف التلقائي
-            startPhoneCarousel();
         });
-        
-        // تأثير تبديل الهواتف التلقائي
-        let currentPhoneIndex = 0;
-        const totalPhones = 4;
-        let carouselInterval;
-        
-        function startPhoneCarousel() {
-            // تعيين فاصل زمني للتبديل التلقائي
-            carouselInterval = setInterval(() => {
-                nextPhone();
-            }, 4000); // تبديل كل 4 ثواني
-            
-            // إضافة مستمعي الأحداث لأزرار التحكم
-            document.getElementById('prevBtn').addEventListener('click', prevPhone);
-            document.getElementById('nextBtn').addEventListener('click', nextPhone);
-            
-            // إضافة مستمعي الأحداث للنقاط
-            const dots = document.querySelectorAll('.dot');
-            dots.forEach(dot => {
-                dot.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    goToPhone(index);
-                });
-            });
-        }
-        
-        function nextPhone() {
-            currentPhoneIndex = (currentPhoneIndex + 1) % totalPhones;
-            updatePhonePositions();
-        }
-        
-        function prevPhone() {
-            currentPhoneIndex = (currentPhoneIndex - 1 + totalPhones) % totalPhones;
-            updatePhonePositions();
-        }
-        
-        function goToPhone(index) {
-            currentPhoneIndex = index;
-            updatePhonePositions();
-        }
-        
-        function updatePhonePositions() {
-            const phones = document.querySelectorAll('.phone');
-            const dots = document.querySelectorAll('.dot');
-            
-            // تحديث النقاط النشطة
-            dots.forEach((dot, index) => {
-                if (index === currentPhoneIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-            
-            // إعادة تعيين جميع الفئات
-            phones.forEach(phone => {
-                phone.classList.remove('phone-hidden-left', 'phone-left-1', 'phone-left-2', 'phone-center', 'phone-right-1', 'phone-right-2', 'phone-hidden-right');
-            });
-            
-            // تعيين الفئات بناءً على الفهرس الحالي
-            phones.forEach((phone, index) => {
-                // حساب الموضع النسبي للهاتف بناءً على الفهرس الحالي
-                const position = (index - currentPhoneIndex + 3) % 7;
-                
-                // تعيين الفئة المناسبة بناءً على الموضع
-                switch(position) {
-                    case 0:
-                        phone.classList.add('phone-hidden-left');
-                        break;
-                    case 1:
-                        phone.classList.add('phone-left-1');
-                        break;
-                    case 2:
-                        phone.classList.add('phone-left-2');
-                        break;
-                    case 3:
-                        phone.classList.add('phone-center');
-                        break;
-                    case 4:
-                        phone.classList.add('phone-right-1');
-                        break;
-                    case 5:
-                        phone.classList.add('phone-right-2');
-                        break;
-                    case 6:
-                        phone.classList.add('phone-hidden-right');
-                        break;
-                }
-            });
-        }
         
         // وظائف الرسالة الجديدة
         function sendMessage(e) {
@@ -3099,11 +1797,11 @@
             const lightboxPrev = document.getElementById('lightboxPrev');
             const lightboxNext = document.getElementById('lightboxNext');
             
-            const phoneScreens = document.querySelectorAll('.phone-screen img');
+            const galleryImages = document.querySelectorAll('.gallery-grid img');
             let currentIndex = 0;
             
             // فتح Lightbox عند النقر على صورة
-            phoneScreens.forEach((img, index) => {
+            galleryImages.forEach((img, index) => {
                 img.addEventListener('click', () => {
                     currentIndex = index;
                     openLightbox();
@@ -3125,20 +1823,20 @@
             
             // تحديث محتوى Lightbox
             function updateLightbox() {
-                const currentImg = phoneScreens[currentIndex];
+                const currentImg = galleryImages[currentIndex];
                 lightboxImg.src = currentImg.src;
                 lightboxCaption.textContent = currentImg.alt || 'صورة من التطبيق';
-                lightboxCounter.textContent = `${currentIndex + 1} / ${phoneScreens.length}`;
+                lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
             }
             
             // التنقل بين الصور
             function navigate(direction) {
                 currentIndex += direction;
                 
-                if (currentIndex >= phoneScreens.length) {
+                if (currentIndex >= galleryImages.length) {
                     currentIndex = 0;
                 } else if (currentIndex < 0) {
-                    currentIndex = phoneScreens.length - 1;
+                    currentIndex = galleryImages.length - 1;
                 }
                 
                 updateLightbox();
@@ -3171,140 +1869,6 @@
                 }
             });
         }
-        
-        // إدارة إشعارات التحديثات
-        const notificationToggle = document.getElementById('notificationToggle');
-        const toggleText = document.getElementById('toggleText');
-        const toggleIcon = document.getElementById('toggleIcon');
-        const notificationStatus = document.getElementById('notificationStatus');
-
-        // تحميل حالة الإشعارات من localStorage
-        let notificationsEnabled = localStorage.getItem('notificationsEnabled') === 'true';
-
-        // تحديث الواجهة بناءً على الحالة
-        function updateNotificationUI() {
-            if (notificationsEnabled) {
-                toggleText.textContent = 'إلغاء الإشعارات';
-                toggleIcon.innerHTML = '<i class="fas fa-toggle-on"></i>';
-                notificationToggle.classList.add('active');
-                notificationStatus.innerHTML = '<i class="fas fa-check-circle"></i> الإشعارات مفعلة بنجاح!';
-                notificationStatus.classList.add('active');
-            } else {
-                toggleText.textContent = 'تفعيل الإشعارات';
-                toggleIcon.innerHTML = '<i class="fas fa-toggle-off"></i>';
-                notificationToggle.classList.remove('active');
-                notificationStatus.innerHTML = '<i class="fas fa-info-circle"></i> الإشعارات غير مفعلة حالياً';
-                notificationStatus.classList.remove('active');
-            }
-        }
-
-        // تحديث الواجهة عند التحميل
-        updateNotificationUI();
-
-        // تفعيل/إلغاء الإشعارات عند النقر
-        notificationToggle.addEventListener('click', function() {
-            notificationsEnabled = !notificationsEnabled;
-            localStorage.setItem('notificationsEnabled', notificationsEnabled);
-            
-            // عرض رسالة تأكيد
-            showNotificationMessage(
-                notificationsEnabled ? 'تم تفعيل الإشعارات!' : 'تم إلغاء الإشعارات',
-                notificationsEnabled 
-                    ? 'سيصلك إشعار فور نزول أي تحديث جديد للتطبيق' 
-                    : 'لن تصلك إشعارات بالتحديثات الجديدة',
-                notificationsEnabled
-            );
-            
-            updateNotificationUI();
-        });
-
-        // رسالة تأكيد خاصة بالإشعارات
-        function showNotificationMessage(title, text, isSuccess) {
-            const modal = document.getElementById('messageModal');
-            const icon = document.getElementById('messageIcon');
-            const titleElement = document.getElementById('messageTitle');
-            const textElement = document.getElementById('messageText');
-            
-            if (isSuccess) {
-                icon.innerHTML = '<i class="fas fa-bell notification-icon"></i>';
-                icon.style.color = 'var(--notification-color)';
-                titleElement.textContent = title;
-                titleElement.className = 'message-title';
-            } else {
-                icon.innerHTML = '<i class="fas fa-bell-slash"></i>';
-                icon.style.color = 'var(--accent-color)';
-                titleElement.textContent = title;
-                titleElement.className = 'message-title';
-            }
-            
-            textElement.textContent = text;
-            modal.style.display = 'flex';
-            
-            // إغلاق الرسالة تلقائياً بعد 3 ثوان
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 3000);
-        }
-        
-        // وظائف مشغل الفيديو الجديد
-        document.addEventListener('DOMContentLoaded', function() {
-            const videoTrigger = document.getElementById('videoTrigger');
-            const videoPlayer = document.getElementById('videoPlayer');
-            const videoOverlay = document.getElementById('videoOverlay');
-            const playBtn = document.getElementById('playBtn');
-            const videoFrame = document.getElementById('videoFrame');
-            const videoCloseBtn = document.getElementById('videoCloseBtn');
-            
-            // رابط الفيديو
-            const videoUrl = 'https://youtu.be/88q9iMLCjoI?si=sRNDOufEWlWbvfqF';
-            
-            // عند النقر على زر مشاهدة الفيديو
-            videoTrigger.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // إظهار مشغل الفيديو
-                videoPlayer.style.display = 'block';
-                
-                // تمرير المستخدم إلى قسم التحميل
-                const downloadSection = document.getElementById('download');
-                window.scrollTo({
-                    top: downloadSection.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            });
-            
-            // عند النقر على زر التشغيل
-            playBtn.addEventListener('click', function() {
-                // إخفاء الـ overlay
-                videoOverlay.classList.add('hidden');
-                
-                // تحميل الفيديو
-                videoFrame.src = videoUrl + '&autoplay=1';
-            });
-            
-            // عند النقر على زر الإغلاق
-            videoCloseBtn.addEventListener('click', function() {
-                // إخفاء مشغل الفيديو
-                videoPlayer.style.display = 'none';
-                
-                // إظهار الـ overlay مرة أخرى
-                videoOverlay.classList.remove('hidden');
-                
-                // إيقاف الفيديو
-                videoFrame.src = '';
-            });
-        });
-    </script>
-    
-    <!-- كود إشعارات OneSignal -->
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-    <script>
-        window.OneSignalDeferred = window.OneSignalDeferred || [];
-        OneSignalDeferred.push(async function(OneSignal) {
-            await OneSignal.init({
-                appId: "aa7ffaa6-dd1f-4d06-be69-699ca76fa88d", // هذا هو App ID الخاص بك
-            });
-        });
     </script>
 </body>
 </html>
